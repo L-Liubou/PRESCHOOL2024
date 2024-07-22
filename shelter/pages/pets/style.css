@@ -190,3 +190,62 @@ a:link, a:visited {
     color: #CDCDCD;
     background-color:#FFFFFF;
 }
+
+.footer-wrapper {
+    background-image: url(../../assets/images/footer-background.png), url(../../assets/images/footer-gradient-background.png);
+    background-size: cover;
+}
+
+.footer {
+    padding: 40px 40px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.footer__title {
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+}
+
+.footer__contacts, .footer__locations {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0 60px;
+    width: 300px;
+    gap: 32px;
+}
+
+.footer__contacts {
+    gap: 40px;
+}
+
+.contacts__information, .locations__information {
+    font: 400 20px/23px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #F1CDB3;
+}
+
+.locations__information a, .contacts__information a {
+    transition: 0.3s;
+}
+
+.locations, .contacts {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.locations__information a:hover, .contacts__information a:hover {
+    color: #fae3d2;
+}
+
+.footer__puppy {
+    align-self: flex-end;
+}
+
+.contacts__icon {
+    width: 40px;
+    height: 32px;
+}
