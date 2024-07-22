@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 890px;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px;
+}
+
+.header__logo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.logo__title {
+    font: 400 32px/35px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+    transition: 0.3s;
+}
+
+.logo__title:hover {
+    color: #292929;
+}
+
+.logo__subtitle {
+    font: 400 13px/15px Arial, sans-serif;
+    letter-spacing: 0.1em;
+    color: #292929;
+}
+
+.menu__list {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.menu__item {
+    font: 400 15px/24px Arial, sans-serif;
+    color: #545454;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu__item--active, .menu__item:hover {
+    color: #292929;
+}
+
+.menu__item--active {
+    border-bottom: 3px solid #F1CDB3;
+}
+
+.main-wrapper {
+    background-color: #F6F6F6;
+}
+
+.our-friends {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 40px 100px;
+}
+
+.our-friends__heading {
+    max-width: 400px;
+    text-align: center;
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.container__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px 40px;
+    padding: 15px 0;
+    margin: 45px 0;
+}
+
+.card--pet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    border-radius: 10px;
+    background-color: #FAFAFA;
+    padding-bottom: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card--pet:hover {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+
+.card--pet:hover .button--secondary {
+    background-color: #FFFFFF;
+}
+
+.card--pet:hover .button--secondary:hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+}
+
+.card__name {
+    font: 400 20px/23px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.button--secondary {
+    font: 400 17px/22px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #292929;
+    border-radius: 100px;
+    border: 2px solid #F1CDB3;
+    background-color: #FAFAFA;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 187px;
+    height: 52px;
+}
+
+.button--secondary:hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+}
+
+.navigation {
+    display: flex;
+    gap: 20px;
+}
+
+.navigation-button {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font: 400 20px/23px Georgia, serif;
+    letter-spacing: 0.06em;
+    border: 2px solid #F1CDB3;
+}
+
+.button-paginator {
+    cursor: pointer;
+    transition: 0.3s;
+    color: #292929;
+    background-color: #FFFFFF;
+}
+
+.button-paginator:hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+}
+
+.button-paginator-active {
+    background-color: #F1CDB3;
+    color: #292929;
+}
+
+.button-paginator-inactive {
+    border-color: #CDCDCD;
+    color: #CDCDCD;
+    background-color:#FFFFFF;
+}
+
+.footer-wrapper {
+    background-image: url(../../assets/images/footer-background.png), url(../../assets/images/footer-gradient-background.png);
+    background-size: cover;
+}
+
+.footer {
+    padding: 40px 40px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.footer__title {
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+}
+
+.footer__contacts, .footer__locations {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0 60px;
+    width: 300px;
+    gap: 32px;
+}
+
+.footer__contacts {
+    gap: 40px;
+}
+
+.contacts__information, .locations__information {
+    font: 400 20px/23px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #F1CDB3;
+}
+
+.locations__information a, .contacts__information a {
+    transition: 0.3s;
+}
+
+.locations, .contacts {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.locations__information a:hover, .contacts__information a:hover {
+    color: #fae3d2;
+}
+
+.footer__puppy {
+    align-self: flex-end;
+}
+
+.contacts__icon {
+    width: 40px;
+    height: 32px;
+}

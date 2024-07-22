@@ -1,0 +1,455 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 1050px;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.start-screen-wrapper {
+    background: url(../../assets/images/start-screen-gradient-background.jpg), url(../../assets/images/noise_transparent.png);
+    background-size: cover;
+}
+
+.start-screen {
+    padding: 30px 40px 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 90px;
+}
+
+.header__logo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.logo__title a {
+    font: 400 32px/35px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #F1CDB3;
+    transition: 0.3s;
+}
+
+.logo__title a:hover {
+    color: #fae3d2;
+}
+
+.logo__subtitle {
+    font: 400 13px/15px Arial, sans-serif;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+}
+
+.menu__list {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+.menu__item {
+    font: 400 15px/24px Arial, sans-serif;
+    color: #CDCDCD;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu__item:hover, .menu__item--active {
+    color: #FAFAFA;
+}
+
+.menu__item--active {
+    border-bottom: 3px solid #F1CDB3;
+}
+
+.start-screen__content {
+    display: flex;
+    gap: 42px;
+}
+
+.not-only {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 163px;
+    gap: 42px;
+}
+
+.not-only__heading {
+    width: 70%;
+    font: 400 44px/57px Georgia, serif;
+    color: #FFFFFF;
+}
+
+.not-only__subheading {
+    font: 400 15px/24px Arial, sans-serif;
+    color: #CDCDCD;
+}
+
+.button--primary {
+    text-align: center;
+    padding: 15px;
+    font: 400 17px/22px Georgia, serif;
+    letter-spacing: 0.06em;
+    border: none;
+    border-radius: 100px;
+    background-color: #F1CDB3;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 207px;
+    height: 52px;
+}
+
+a.button--primary {
+    color: #292929;
+}
+
+.button--primary:hover {
+    background-color: #FDDCC4;
+}
+
+.start-screen__image {
+    width: 698px;
+    height: 728px;
+}
+
+/* About Section */
+.about {
+    padding: 80px 40px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+}
+
+.about__content {
+    width: 430px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 14px 0;
+}
+
+.about__heading {
+    width: 95%;
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.about__subheading {
+    font: 400 15px/24px Arial, sans-serif;
+    color: #4C4C4C;
+}
+
+.about__pets {
+    width: 300px;
+    height: 408px;
+}
+
+/* Our Friends Section */
+.our-friends-wrapper {
+    background-color: #F6F6F6;
+}
+
+.our-friends {
+    padding: 80px 40px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.our-friends__heading {
+    text-align: center;
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.our-friends__slider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.slider__cards {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.card--pet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background-color: #FAFAFA;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card--pet:hover {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+
+.card--pet:hover .button--secondary {
+    background-color: #FFFFFF;
+}
+
+.card--pet:hover .button--secondary:hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+}
+
+.card__name {
+    font: 400 20px/23px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.button--secondary {
+    font: 400 17px/22px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #292929;
+    border-radius: 100px;
+    border: 2px solid #F1CDB3;
+    background-color: #FAFAFA;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 187px;
+    height: 52px;
+}
+
+.button--secondary:hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+}
+
+.button--arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 52px;
+    height: 52px;
+    border-radius: 100%;
+    border: 2px solid #F1CDB3;
+    background-color: #FAFAFA;
+}
+
+.button--arrow:hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+}
+
+.button--primary-pets {
+    text-align: center;
+    font: 400 17px/22px Georgia, serif;
+    letter-spacing: 0.06em;
+    padding: 15px;
+    border: none;
+    border-radius: 100px;
+    background-color: #F1CDB3;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 261px;
+    height: 52px;
+}
+
+a.button--primary-pets {
+    color: #292929;
+}
+
+.button--primary-pets:hover {
+    background-color: #FDDCC4;
+}
+
+/* Help Section */
+.help {
+    padding: 80px 40px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.help__heading {
+    text-align: center;
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.help__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 55px 119px;
+    padding: 60px 87px 0;
+}
+
+.help-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.help-card__icon {
+    width: 60px;
+    height: 60px;
+}
+
+.help-card__name {
+    font: 400 20px/23px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+/* In Addition Section */
+.in-addition-wrapper {
+    background-color: #F6F6F6;
+}
+
+.in-addition {
+    padding: 80px 182px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.in-addition__content {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.in-addition__heading {
+    width: 80%;
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.in-addition__subheading {
+    font: 400 15px/17px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.in-addition-image {
+    margin: 11px 0 10px 0;
+}
+
+.credit-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #F1CDB3;
+    padding: 10px 15px;
+    border-radius: 9px;
+}
+
+.credit-card__number {
+    font: 400 20px/23px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.credit-card__number:hover {
+    color: #3b3b3b;
+}
+
+.in-addition__information {
+    font: italic 400 12px/18px Arial, sans-serif;
+    color: #B2B2B2;
+}
+
+/* Footer */
+.footer-wrapper {
+    background: url(../../assets/images/footer-background.png), url(../../assets/images/footer-gradient-background.png);
+    background-size: cover;
+}
+
+.footer {
+    padding: 40px 40px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.footer__title {
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+}
+
+.footer__contacts, .footer__locations {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0 60px;
+    width: 300px;
+    gap: 32px;
+}
+
+.footer__contacts {
+    gap: 40px;
+}
+
+.contacts__information, .locations__information {
+    font: 400 20px/23px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #F1CDB3;
+}
+
+.locations__information a, .contacts__information a {
+    transition: 0.3s;
+}
+
+.locations, .contacts {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.locations__information a:hover, .contacts__information a:hover {
+    color: #fae3d2;
+}
+
+.footer__puppy {
+    align-self: flex-end;
+}
+
+.contacts__icon {
+    width: 40px;
+    height: 32px;
+}
