@@ -166,3 +166,125 @@ a.button--primary {
     width: 300px;
     height: 408px;
 }
+
+/* Our Friends Section */
+.our-friends-wrapper {
+    background-color: #F6F6F6;
+}
+
+.our-friends {
+    padding: 80px 40px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.our-friends__heading {
+    text-align: center;
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.our-friends__slider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.slider__cards {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.card--pet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background-color: #FAFAFA;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card--pet:hover {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+
+.card--pet:hover .button--secondary {
+    background-color: #FFFFFF;
+}
+
+.card--pet:hover .button--secondary:hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+}
+
+.card__name {
+    font: 400 20px/23px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.button--secondary {
+    font: 400 17px/22px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #292929;
+    border-radius: 100px;
+    border: 2px solid #F1CDB3;
+    background-color: #FAFAFA;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 187px;
+    height: 52px;
+}
+
+.button--secondary:hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+}
+
+.button--arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 52px;
+    height: 52px;
+    border-radius: 100%;
+    border: 2px solid #F1CDB3;
+    background-color: #FAFAFA;
+}
+
+.button--arrow:hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+}
+
+.button--primary-pets {
+    text-align: center;
+    font: 400 17px/22px Georgia, serif;
+    letter-spacing: 0.06em;
+    padding: 15px;
+    border: none;
+    border-radius: 100px;
+    background-color: #F1CDB3;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 261px;
+    height: 52px;
+}
+
+a.button--primary-pets {
+    color: #292929;
+}
+
+.button--primary-pets:hover {
+    background-color: #FDDCC4;
+}
