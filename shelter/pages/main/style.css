@@ -132,3 +132,37 @@ a.button--primary {
     width: 698px;
     height: 728px;
 }
+
+/* About Section */
+.about {
+    padding: 80px 40px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+}
+
+.about__content {
+    width: 430px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 14px 0;
+}
+
+.about__heading {
+    width: 95%;
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.about__subheading {
+    font: 400 15px/24px Arial, sans-serif;
+    color: #4C4C4C;
+}
+
+.about__pets {
+    width: 300px;
+    height: 408px;
+}
