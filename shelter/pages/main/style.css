@@ -329,3 +329,67 @@ a.button--primary-pets {
     letter-spacing: 0.06em;
     color: #545454;
 }
+
+/* In Addition Section */
+.in-addition-wrapper {
+    background-color: #F6F6F6;
+}
+
+.in-addition {
+    padding: 80px 182px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.in-addition__content {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.in-addition__heading {
+    width: 80%;
+    font: 400 35px/46px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.in-addition__subheading {
+    font: 400 15px/17px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+
+.in-addition-image {
+    margin: 11px 0 10px 0;
+}
+
+.credit-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #F1CDB3;
+    padding: 10px 15px;
+    border-radius: 9px;
+}
+
+.credit-card__number {
+    font: 400 20px/23px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #545454;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.credit-card__number:hover {
+    color: #3b3b3b;
+}
+
+.in-addition__information {
+    font: italic 400 12px/18px Arial, sans-serif;
+    color: #B2B2B2;
+}
