@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 1050px;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.start-screen-wrapper {
+    background: url(../../assets/images/start-screen-gradient-background.jpg), url(../../assets/images/noise_transparent.png);
+    background-size: cover;
+}
+
+.start-screen {
+    padding: 30px 40px 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 90px;
+}
+
+.header__logo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.logo__title a {
+    font: 400 32px/35px Georgia, serif;
+    letter-spacing: 0.06em;
+    color: #F1CDB3;
+    transition: 0.3s;
+}
+
+.logo__title a:hover {
+    color: #fae3d2;
+}
+
+.logo__subtitle {
+    font: 400 13px/15px Arial, sans-serif;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+}
+
+.menu__list {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+.menu__item {
+    font: 400 15px/24px Arial, sans-serif;
+    color: #CDCDCD;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu__item:hover, .menu__item--active {
+    color: #FAFAFA;
+}
+
+.menu__item--active {
+    border-bottom: 3px solid #F1CDB3;
+}
+
+.start-screen__content {
+    display: flex;
+    gap: 42px;
+}
+
+.not-only {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 163px;
+    gap: 42px;
+}
+
+.not-only__heading {
+    width: 70%;
+    font: 400 44px/57px Georgia, serif;
+    color: #FFFFFF;
+}
+
+.not-only__subheading {
+    font: 400 15px/24px Arial, sans-serif;
+    color: #CDCDCD;
+}
+
+.button--primary {
+    text-align: center;
+    padding: 15px;
+    font: 400 17px/22px Georgia, serif;
+    letter-spacing: 0.06em;
+    border: none;
+    border-radius: 100px;
+    background-color: #F1CDB3;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 207px;
+    height: 52px;
+}
+
+a.button--primary {
+    color: #292929;
+}
+
+.button--primary:hover {
+    background-color: #FDDCC4;
+}
+
+.start-screen__image {
+    width: 698px;
+    height: 728px;
+}
