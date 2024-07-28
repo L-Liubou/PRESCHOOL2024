@@ -119,10 +119,6 @@ a:link, a:visited {
 }
 
 .card--pet:hover .button--secondary {
-    background-color: #FFFFFF;
-}
-
-.card--pet:hover .button--secondary:hover {
     background-color: #FDDCC4;
     border-color: #FDDCC4;
 }
