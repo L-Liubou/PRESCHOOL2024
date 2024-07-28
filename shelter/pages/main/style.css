@@ -407,7 +407,7 @@ a.button--primary-pets {
 
 .footer__title {
     font: 400 35px/46px Georgia, serif;
-    letter-spacing: 0.06em;
+    letter-spacing: 2px;
     color: #FFFFFF;
 }
 
@@ -421,6 +421,7 @@ a.button--primary-pets {
 
 .footer__contacts {
     gap: 40px;
+    width: 278px;
 }
 
 .contacts__information, .locations__information {
