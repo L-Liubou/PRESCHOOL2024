@@ -191,12 +191,14 @@ a.button--primary {
     display: flex;
     align-items: center;
     width: 100%;
+    gap: 53px;
 }
 
 .slider__cards {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
+    gap: 60px;
 }
 
 .card--pet {
@@ -217,10 +219,6 @@ a.button--primary {
 }
 
 .card--pet:hover .button--secondary {
-    background-color: #FFFFFF;
-}
-
-.card--pet:hover .button--secondary:hover {
     background-color: #FDDCC4;
     border-color: #FDDCC4;
 }
@@ -409,7 +407,7 @@ a.button--primary-pets {
 
 .footer__title {
     font: 400 35px/46px Georgia, serif;
-    letter-spacing: 0.06em;
+    letter-spacing: 2px;
     color: #FFFFFF;
 }
 
@@ -423,6 +421,7 @@ a.button--primary-pets {
 
 .footer__contacts {
     gap: 40px;
+    width: 278px;
 }
 
 .contacts__information, .locations__information {
