@@ -191,12 +191,14 @@ a.button--primary {
     display: flex;
     align-items: center;
     width: 100%;
+    gap: 53px;
 }
 
 .slider__cards {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
+    gap: 60px;
 }
 
 .card--pet {
