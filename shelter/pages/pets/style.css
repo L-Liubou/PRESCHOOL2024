@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    min-width: 300px;
+    min-width: 320px;
 }
 
 .container {
@@ -62,7 +62,7 @@ a:link, a:visited {
 .header__logo {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .logo__title {
@@ -104,16 +104,19 @@ a:link, a:visited {
     border-bottom: 3px solid #F1CDB3;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
     .header {
         padding: 30px 32px;
     }
-
 }
 
 @media screen and (max-width: 767px) {
     .header__burger {
         display: block;
+    }
+
+    .header {
+        padding: 30px 20px;
     }
 
     .menu {
@@ -124,19 +127,13 @@ a:link, a:visited {
         opacity: 0;
         max-height: 0;
     }
+}
 
-    .menu.active {
+    /*.menu.active {
         display: flex;
         opacity: 1;
-        max-height: 500px; /* высота для раскрытого меню */
-    }
-}
-
-@media screen and (max-width: 320px){
-    .header {
-        padding: 30px 20px;
-    }
-}
+        max-height: 500px;} (высота для раскрытого меню )*/
+    
 
 .main-wrapper {
     background-color: #F6F6F6;
@@ -150,7 +147,6 @@ a:link, a:visited {
 }
 
 .our-friends__heading {
-    max-width: 400px;
     text-align: center;
     font: 400 35px/46px Georgia, serif;
     letter-spacing: 0.06em;
@@ -161,7 +157,7 @@ a:link, a:visited {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 30px 40px;
+    gap: 30px 20px;
     padding: 15px 0;
     margin: 45px 0;
 }
@@ -253,52 +249,51 @@ a:link, a:visited {
 }
 
 
-@media screen and (max-width: 1279px) {
-    .our-friends {
+  @media screen and (max-width: 1220px) {
+   .our-friends {
         padding: 80px 30px 75px;
     }
+
     .container__cards {
         justify-content: space-evenly;
     }
-}
 
-@media screen and (max-width: 1259px) {
-    .hidden-on-medium {
-        display: none;
-    }
-} 
-
-@media screen and (max-width: 949px) {
     .container__cards {
         padding: 28px 64px 40px;
         margin: 0;
+        gap: 30px 40px;
+    } 
+    
+    .hidden-on-medium {
+        display: none;
     }
 }
 
-
- @media screen and (max-width: 767px) {
-    .our-friends {
-        padding: 42px 10px;
-    }
-
-    .container__cards {
-        padding: 42px 15px;
-    }
-} 
-
-@media screen and (max-width: 629px) {
+@media screen and (max-width: 767px) {
     .hidden-on-small {
         display: none;
     }
+}
 
+@media screen and (max-width: 663px) {
+    .navigation {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 460px) {
     .our-friends__heading {
         font-size: 25px;
         line-height: 32px;
         padding-top: 0;
     }
 
-    .navigation {
-        gap: 10px;
+    .our-friends {
+        padding: 42px 10px;
+    }
+
+    .container__cards {
+        padding: 42px 15px;
     }
 }
 
@@ -364,17 +359,12 @@ a:link, a:visited {
     height: 32px;
 }
 
-@media screen and (max-width: 1068px) {
-    .footer {
-        padding: 30px 30px 0;
-    }
-}
-
-@media screen and (max-width: 1027px) {
+@media screen and (max-width: 1279px) {
     .footer {
         flex-wrap: wrap;
         justify-content: space-evenly;
         gap: 65px 26px;
+        padding: 30px 30px 0;
     }
 
     .footer__contacts, .footer__locations {
@@ -382,7 +372,7 @@ a:link, a:visited {
     }
 }
 
-@media screen and (max-width: 513px) {
+@media screen and (max-width: 496px) {
     .footer {
         padding: 30px 10px 0;
         gap: 40px;
