@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    min-width: 300px;
+    min-width: 320px;
 }
 
 .container {
@@ -257,7 +257,7 @@ a.button--primary {
 }
 
 .about__content {
-    max-width: 430px; 
+    max-width: 36%; 
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -265,7 +265,6 @@ a.button--primary {
 }
 
 .about__heading {
-    /* width: 95%; */
     font: 400 35px/45px Georgia, serif;
     letter-spacing: 0.06em;
     color: #545454;
@@ -288,8 +287,7 @@ a.button--primary {
     }
 } 
 
-
- @media screen and (max-width: 482px) {
+ @media screen and (max-width: 566px) {
      .about {
         padding: 42px 10px;
         gap: 42px;
@@ -298,7 +296,7 @@ a.button--primary {
     .about__content {
         align-items: center;
         gap: 22px;
-        max-width: 270px;
+        max-width: 90%;
     }
 
     .about__heading {
@@ -316,7 +314,6 @@ a.button--primary {
         max-width: 260px;
      }  
  }
-
 
 /*! Our Friends Section */
 .our-friends-wrapper {
@@ -438,11 +435,7 @@ a.button--primary-pets {
     background-color: #FDDCC4;
 }
 
-@media screen and (max-width: 1220px) {
-    .our-friends {
-        padding: 80px 30px 100px;
-    }
-
+@media screen and (max-width: 1279px) {
     .our-friends__slider {
         gap: 12px;
     }
@@ -450,6 +443,10 @@ a.button--primary-pets {
     .slider__cards {
         gap: 40px;
         justify-content: space-evenly;
+    }
+
+    .our-friends {
+        padding: 80px 30px 100px;
     }
 }
 
@@ -459,16 +456,7 @@ a.button--primary-pets {
     }
 }
 
-
 @media screen and (max-width: 767px) {
-    .slider__cards {
-        display: block;
-    }
-
-    .button--arrow {
-        order:1;
-    }
-
     .card--pet:nth-child(2) {
         display: none;
     }
@@ -484,12 +472,22 @@ a.button--primary-pets {
     }
 
     .our-friends__slider {
-        flex-wrap: wrap;
         justify-content: space-evenly;
         gap: 20px;
+        padding: 0 20px;
     }
 }
 
+@media screen and (max-width: 476px) {
+    .our-friends__slider {
+        flex-wrap: wrap;
+        padding: 0;
+    }
+
+    .slider__cards {
+        order: -1;
+    }
+}
 
 /*! Help Section */
 .help {
@@ -532,7 +530,7 @@ a.button--primary-pets {
     color: #545454;
 }
 
- @media screen and (max-width: 1278px) {
+ @media screen and (max-width: 1279px) {
     .help {
         padding: 80px 69px 100px;
     }
@@ -544,7 +542,7 @@ a.button--primary-pets {
 
     .help__list {
         padding: 60px 0 0;
-        /* justify-content: space-evenly; */
+        justify-content: space-evenly;
         gap: 55px 60px;
     } 
 }
@@ -559,16 +557,13 @@ a.button--primary-pets {
         line-height: 32px;
     }
 
-     .help__list {
-        padding: 42px 0 0;
-     }
-}
-
-@media screen and (max-width: 429px) {
     .help__list {
+        padding: 42px 0 0;
         gap: 30px;
     }
+}
 
+@media screen and (max-width: 399px) {
     .help-card {
         width: 130px;
         height: 87px;
@@ -576,21 +571,27 @@ a.button--primary-pets {
     }
 
     .help-card__name {
-    font-size: 15px;
-    line-height: 16px;
+        font-size: 15px;
+        line-height: 16px;
     }
 
     .help-card__icon {
-    width: 50px;
-    height: 50px; 
+        width: 50px;
+        height: 50px; 
     } 
 }
 
 @media screen and (max-width: 320px) {
     .help-card:last-child {
-            margin-right:  auto;
+            margin-right: auto;
         } 
     }
+
+@media screen and (max-width: 319px) {
+    .help-card:last-child {
+        margin-right: 0;
+    } 
+}
 
 /*! In Addition Section */
 .in-addition-wrapper {
@@ -654,7 +655,7 @@ a.button--primary-pets {
     color: #B2B2B2;
 }
 
-  @media screen and (max-width: 1068px) {
+   @media screen and (max-width: 1227px) {
     .in-addition {
         flex-direction: column-reverse;
         gap: 60px;
@@ -667,12 +668,7 @@ a.button--primary-pets {
     }
 }
 
- @media screen and (max-width: 518px) {
-    .credit-card__number {
-        font-size: 15px;
-        line-height: 16px;
-    }
-
+ @media screen and (max-width: 677px) {
     .in-addition__subheading {
         line-height: 24px;
         letter-spacing: 0;
@@ -685,7 +681,7 @@ a.button--primary-pets {
     }
 
     .in-addition-image {
-        width: 260px;
+        width: 86%;
     }
 
      .in-addition__heading {
@@ -696,15 +692,21 @@ a.button--primary-pets {
     }
 
     .in-addition__content {
-    align-items: center;
+        align-items: center;
     } 
-.in-addition__information {
+
+   .in-addition__information {
         text-align: justify;
         padding: 0 10px;
     }
-} 
+}
 
-    
+@media screen and (max-width: 378px) {
+    .credit-card__number {
+        font-size: 15px;
+        line-height: 16px;
+    }
+}
 
 /* !Footer */
 .footer-wrapper {
@@ -767,17 +769,12 @@ a.button--primary-pets {
     height: 32px;
 }
 
-@media screen and (max-width: 1068px) {
-    .footer {
-        padding: 30px 30px 0;
-    }
-}
-
-@media screen and (max-width: 1027px) {
+@media screen and (max-width: 1279px) {
     .footer {
         flex-wrap: wrap;
         justify-content: space-evenly;
         gap: 65px 26px;
+        padding: 30px 30px 0;
     }
 
     .footer__contacts, .footer__locations {
@@ -785,7 +782,7 @@ a.button--primary-pets {
     }
 }
 
-@media screen and (max-width: 513px) {
+@media screen and (max-width: 496px) {
     .footer {
         padding: 30px 10px 0;
         gap: 40px;
