@@ -144,44 +144,139 @@ const animals = [
     }
   ];
 
-  const cards = document.querySelectorAll('.card--pet');
-  const modalOverlay = document.querySelector('.modal-overlay');
-  const modalImage = document.querySelector('.modal-image');
-  const modalTitle = document.querySelector('.modal__title');
-  const modalSubtitle = document.querySelector('.modal__subtitle');
-  const modalDescription = document.querySelector('.modal__description');
-  const modalListItems = document.querySelectorAll('.modal__list-item');
-  const closeButton = document.querySelector('.modal__close-button');
+const modalOverlay = document.querySelector('.modal-overlay');
+const modalImage = document.querySelector('.modal-image');
+const modalTitle = document.querySelector('.modal__title');
+const modalSubtitle = document.querySelector('.modal__subtitle');
+const modalDescription = document.querySelector('.modal__description');
+const modalListItems = document.querySelectorAll('.modal__list-item');
+const closeButton = document.querySelector('.modal__close-button');
 
-  function openModal(animal) {
-    modalImage.src = animal.img;
-    modalTitle.textContent = animal.name;
-    modalSubtitle.textContent = `${animal.type} - ${animal.breed}`;
-    modalDescription.textContent = animal.description;
-    modalListItems[0].innerHTML = `<strong>Age:</strong> ${animal.age}`;
-    modalListItems[1].innerHTML = `<strong>Inoculations:</strong> ${animal.inoculations.join(', ')}`;
-    modalListItems[2].innerHTML = `<strong>Diseases:</strong> ${animal.diseases.join(', ')}`;
-    modalListItems[3].innerHTML = `<strong>Parasites:</strong> ${animal.parasites.join(', ')}`;
-    modalOverlay.classList.add('active');
-    body.classList.toggle('no-scroll');
-}
-function closeModal() {
-    modalOverlay.classList.remove('active'); 
-    body.classList.remove('no-scroll');
-}
-
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        const animalName = card.querySelector('.card__name').textContent;
-        const animal = animals.find(a => a.name === animalName);
-        openModal(animal);
-    });
-});
-
+const openModal = animal => {
+  modalImage.src = animal.img;
+  modalTitle.textContent = animal.name;
+  modalSubtitle.textContent = `${animal.type} - ${animal.breed}`;
+  modalDescription.textContent = animal.description;
+  modalListItems[0].querySelector('.modal__list-value').textContent = animal.age;
+  modalListItems[1].querySelector('.modal__list-value').textContent = animal.inoculations.join(', ');
+  modalListItems[2].querySelector('.modal__list-value').textContent = animal.diseases.join(', ');
+  modalListItems[3].querySelector('.modal__list-value').textContent = animal.parasites.join(', ');
+  modalOverlay.classList.add('active');
+  body.classList.toggle('no-scroll');
+  };
+  
+const closeModal = () => {
+  modalOverlay.classList.remove('active'); 
+  body.classList.remove('no-scroll');
+};
+  
 closeButton.addEventListener('click', closeModal);
-
-modalOverlay.addEventListener('click', (element) => {
-    if (element.target === modalOverlay) {
-        closeModal();
-    }
+  
+modalOverlay.addEventListener('click', event => {
+  if (event.target === modalOverlay) closeModal();
 });
+
+
+const displayAnimals = [];
+let activePage = 1;
+let cardsOnPage;
+let totalPages;
+
+const getNumberOfDisplayedCards = () => {
+  if (window.innerWidth >= 1220) return 8;  
+  if (window.innerWidth >= 768 && window.innerWidth < 1220) return 6;  
+  return 3;  
+};
+
+const randomizeArray = (array) => {
+  let randomArray = array.slice(); 
+  for (let i = randomArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [randomArray[i], randomArray[j]] = [randomArray[j], randomArray[i]]; 
+  }
+  return randomArray;
+};
+
+const generateAnimalCards = () => {
+  let allPets = [];
+  for (let i = 0; i < 6; i++) {
+    allPets = allPets.concat(randomizeArray([...animals]));
+  }
+  displayAnimals.length = 0; 
+  displayAnimals.push(...allPets);
+  totalPages = getTotalPages(); 
+  renderCards(activePage); 
+};
+
+const getTotalPages = () => Math.ceil(displayAnimals.length / (cardsOnPage = getNumberOfDisplayedCards()));
+ 
+const renderCards = (page) => {
+  const containerCards = document.querySelector('.container__cards');
+  const startIndex = (page - 1) * cardsOnPage;
+  const endIndex = startIndex + cardsOnPage;
+
+  if (startIndex >= displayAnimals.length) return;
+
+  const pageCards = displayAnimals.slice(startIndex, endIndex);
+
+  containerCards.innerHTML = pageCards.map(animal => `
+    <div class="card--pet">
+      <img src="${animal.img}" class="card__image"> 
+      <p class="card__name">${animal.name}</p>
+      <button class="button--secondary">Learn more</button>
+    </div>`
+  ).join('');
+
+  updatePaginationButtons(page);
+  addClickListenersToCards();
+};
+
+const addClickListenersToCards = () => {
+  document.querySelectorAll('.card--pet').forEach(card => {
+    card.addEventListener('click', () => {
+      const animalName = card.querySelector('.card__name').textContent;
+      const animal = animals.find(item => item.name === animalName);
+      openModal(animal);
+    });
+  });
+};
+
+const updatePaginationButtons = (page) => {
+  const isFirstPage = page === 1;
+  const isLastPage = page === totalPages;
+
+  document.getElementById('first-page').className = isFirstPage ? 'navigation-button button-paginator-inactive' : 'navigation-button button-paginator';
+  document.getElementById('prev-page').className = isFirstPage ? 'navigation-button button-paginator-inactive' : 'navigation-button button-paginator';
+  document.getElementById('next-page').className = isLastPage ? 'navigation-button button-paginator-inactive' : 'navigation-button button-paginator';
+  document.getElementById('last-page').className = isLastPage ? 'navigation-button button-paginator-inactive' : 'navigation-button button-paginator';
+  document.getElementById('page-number').textContent = page;
+  document.getElementById('page-number').className = 'navigation-button button-paginator-active';
+};
+
+const goToPage = (page) => {
+  if (page < 1 || page > totalPages) return;
+  activePage = page;
+  renderCards(page);
+};
+
+const updatePagination = () => {
+  const newTotalPages = getTotalPages();
+  if (newTotalPages !== totalPages) {
+    totalPages = newTotalPages;
+    if (activePage > totalPages) {
+      activePage = totalPages;
+    }
+    renderCards(activePage); 
+  }
+};
+
+document.getElementById('first-page').addEventListener('click', () => goToPage(1));
+document.getElementById('last-page').addEventListener('click', () => goToPage(totalPages));
+document.getElementById('prev-page').addEventListener('click', () => goToPage(activePage - 1));
+document.getElementById('next-page').addEventListener('click', () => goToPage(activePage + 1));
+window.addEventListener('resize', updatePagination);
+window.addEventListener('load', () => {
+  generateAnimalCards();
+  renderCards(activePage);
+});
+

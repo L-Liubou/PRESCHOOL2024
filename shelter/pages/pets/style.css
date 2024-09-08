@@ -205,6 +205,7 @@ a:link, a:visited {
     gap: 30px 20px;
     padding: 15px 0;
     margin: 45px 0;
+    overflow: hidden;
 }
 
 .card--pet {
@@ -309,15 +310,15 @@ a:link, a:visited {
         gap: 30px 40px;
     } 
     
-    .hidden-on-medium {
+    /* .hidden-on-medium {
         display: none;
-    }
+    } */
 }
 
 @media screen and (max-width: 767px) {
-    .hidden-on-small {
+    /* .hidden-on-small {
         display: none;
-    }
+    } */
 }
 
 @media screen and (max-width: 663px) {
@@ -345,19 +346,23 @@ a:link, a:visited {
 /* !Modal window */
 
 .modal-overlay {
-    display: none;
-}
-
-.modal-overlay.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    opacity: 0;
+    visibility: hidden; 
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(41, 41, 41, 0.6); 
+    background: rgba(41, 41, 41, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal {
@@ -368,6 +373,7 @@ a:link, a:visited {
     justify-content: space-between;
     max-width: 900px;
     width: 70%;
+    box-shadow: 0px 2px 35px 14px #0D0D0D0A;
 }
 
 .modal__close-button {
@@ -400,7 +406,7 @@ a:link, a:visited {
     max-width: 371px;
     display: flex;
     flex-direction: column;
-    padding: 50px 17px /*20px*/ 88px 0;
+    padding: 50px 17px 88px 0;
  }
 
  .modal__title {
@@ -423,7 +429,7 @@ a:link, a:visited {
 .modal__list{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 11px;
 }
 
 .modal__list-item {
@@ -432,12 +438,15 @@ a:link, a:visited {
     letter-spacing: 0.06em;
 }
 
+.modal__list-label {
+    font-weight: bold;
+}
 
 .modal__list-item::before {
     content: '•'; 
     color: #F1CDB3;
-    font-size: 12px;
-    margin-right: 9px;
+    font-size: 14px;
+    margin-right: 3px;
 }
 
 @media screen and (max-width: 1077px) {
