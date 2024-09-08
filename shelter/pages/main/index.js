@@ -148,44 +148,140 @@ const animals = [
     }
   ];
 
-  const cards = document.querySelectorAll('.card--pet');
-  const modalOverlay = document.querySelector('.modal-overlay');
-  const modalImage = document.querySelector('.modal-image');
-  const modalTitle = document.querySelector('.modal__title');
-  const modalSubtitle = document.querySelector('.modal__subtitle');
-  const modalDescription = document.querySelector('.modal__description');
-  const modalListItems = document.querySelectorAll('.modal__list-item');
-  const closeButton = document.querySelector('.modal__close-button');
+const preloadImages = (urls) => 
+  Promise.all(urls.map(url => new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = resolve;
+    img.onerror = reject;
+    img.src = url;
+})));
+  
+const imageUrls = animals.map(animal => animal.img);
+  
+preloadImages(imageUrls);
 
-  function openModal(animal) {
-    modalImage.src = animal.img;
-    modalTitle.textContent = animal.name;
-    modalSubtitle.textContent = `${animal.type} - ${animal.breed}`;
-    modalDescription.textContent = animal.description;
-    modalListItems[0].innerHTML = `<strong>Age:</strong> ${animal.age}`;
-    modalListItems[1].innerHTML = `<strong>Inoculations:</strong> ${animal.inoculations.join(', ')}`;
-    modalListItems[2].innerHTML = `<strong>Diseases:</strong> ${animal.diseases.join(', ')}`;
-    modalListItems[3].innerHTML = `<strong>Parasites:</strong> ${animal.parasites.join(', ')}`;
-    modalOverlay.classList.add('active');
-    body.classList.toggle('no-scroll');
-}
-function closeModal() {
-    modalOverlay.classList.remove('active'); 
-    body.classList.remove('no-scroll');
-}
+const modalOverlay = document.querySelector('.modal-overlay');
+const modalImage = document.querySelector('.modal-image');
+const modalTitle = document.querySelector('.modal__title');
+const modalSubtitle = document.querySelector('.modal__subtitle');
+const modalDescription = document.querySelector('.modal__description');
+const modalListItems = document.querySelectorAll('.modal__list-item');
+const closeButton = document.querySelector('.modal__close-button');
 
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        const animalName = card.querySelector('.card__name').textContent;
-        const animal = animals.find(a => a.name === animalName);
-        openModal(animal);
-    });
-});
+const openModal = animal => {
+  modalImage.src = animal.img;
+  modalTitle.textContent = animal.name;
+  modalSubtitle.textContent = `${animal.type} - ${animal.breed}`;
+  modalDescription.textContent = animal.description;
+  modalListItems[0].querySelector('.modal__list-value').textContent = animal.age;
+  modalListItems[1].querySelector('.modal__list-value').textContent = animal.inoculations.join(', ');
+  modalListItems[2].querySelector('.modal__list-value').textContent = animal.diseases.join(', ');
+  modalListItems[3].querySelector('.modal__list-value').textContent = animal.parasites.join(', ');
+  modalOverlay.classList.add('active');
+  body.classList.toggle('no-scroll');
+};
+
+const closeModal = () => {
+  modalOverlay.classList.remove('active'); 
+  body.classList.remove('no-scroll');
+};
 
 closeButton.addEventListener('click', closeModal);
 
-modalOverlay.addEventListener('click', (element) => {
-    if (element.target === modalOverlay) {
-        closeModal();
-    }
+modalOverlay.addEventListener('click', event => {
+    if (event.target === modalOverlay) closeModal();
 });
+
+
+const cardsContainer = document.querySelector('.slider__cards');
+const leftArrowButton = document.getElementById('left-arrow');
+const rightArrowButton = document.getElementById('right-arrow');
+
+let activeCards = [];
+let previousCards = null; 
+let nextCards = null;
+
+const getNumberOfDisplayedCards = () => {
+  if (window.innerWidth >= 1077) return 3;
+  if (window.innerWidth >= 767) return 2;
+  return 1;
+};
+
+const getRandomCards = (usedCards = []) => {
+  const numberOfCards = getNumberOfDisplayedCards();
+  const availableCards = animals.filter(animal => !usedCards.includes(animal));
+  return Array.from({ length: numberOfCards }, () => {
+    const randomIndex = Math.floor(Math.random() * availableCards.length);
+    return availableCards.splice(randomIndex, 1)[0];
+  });
+};
+
+const renderCards = () => {
+  cardsContainer.innerHTML = activeCards.map(animal => `
+      <div class="card--pet">
+          <img src="${animal.img}" class="card__image"> 
+          <p class="card__name">${animal.name}</p>
+          <button class="button--secondary">Learn more</button>
+      </div>`
+  ).join('');
+  addClickListenersToCards();
+};
+
+const addClickListenersToCards = () => {
+  cardsContainer.querySelectorAll('.card--pet').forEach(card => {
+    card.addEventListener('click', () => {
+      const cardName = card.querySelector('.card__name').textContent;
+      const animal = animals.find(item => item.name === cardName);
+      openModal(animal);
+    });
+  });
+};
+
+const showPreviousCards = () => {
+  if (previousCards) {
+    nextCards = [...activeCards]; 
+    activeCards = previousCards;  
+    previousCards = getRandomCards(activeCards);  
+    renderCards();
+  } else {
+    previousCards = getRandomCards(activeCards);  
+    showPreviousCards();
+  }
+};
+
+const showNextCards = () => {
+  previousCards = [...activeCards];  
+  if (nextCards) {
+    activeCards = nextCards;  
+  } else {
+    activeCards = getRandomCards(previousCards);  
+  }
+  nextCards = getRandomCards(activeCards);  
+  renderCards();
+};
+
+const updateCardsOnResize = () => {
+  const numberOfCards = getNumberOfDisplayedCards();
+  const newCardSet = getRandomCards([]);
+
+  if (activeCards.length !== numberOfCards) {
+    activeCards = newCardSet;
+    previousCards = null; 
+    nextCards = null;
+    renderCards();
+  }
+};
+
+const initializeSlider = () => {
+  activeCards = getRandomCards([]); 
+  previousCards = getRandomCards(activeCards); 
+  nextCards = getRandomCards(activeCards);    
+  renderCards();
+};
+
+leftArrowButton.addEventListener('click', showPreviousCards);
+rightArrowButton.addEventListener('click', showNextCards);
+window.addEventListener('resize', updateCardsOnResize);
+
+initializeSlider();
+
