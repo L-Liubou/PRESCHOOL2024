@@ -27,29 +27,30 @@ const headerBurger = document.querySelector('.header__burger');
 const body = document.body;
 const overlay = document.querySelector('.overlay');
 
-headerBurger.addEventListener('click', () => {
-    headerBurger.classList.toggle('active');
-    menu.classList.toggle('active');
-    overlay.classList.toggle('active');
-    body.classList.toggle('no-scroll');
-});
+const toggleMenu = () => {
+  headerBurger.classList.toggle('active');
+  menu.classList.toggle('active');
+  overlay.classList.toggle('active');
+  body.classList.toggle('no-scroll');
+};
 
-menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', function() {
-        if (!link.classList.contains('exclude-link')){ 
-        headerBurger.classList.remove('active');
-        menu.classList.remove('active');
-        overlay.classList.remove('active');
-        body.classList.remove('no-scroll');
-        }
-    });
-});
+headerBurger.addEventListener('click', toggleMenu);
 
-overlay.addEventListener('click',() => {
-    headerBurger.classList.remove('active');
-    menu.classList.remove('active');
-    overlay.classList.remove('active');
-    body.classList.remove('no-scroll'); 
+const closeMenu = () => {
+  headerBurger.classList.remove('active');
+  menu.classList.remove('active');
+  overlay.classList.remove('active');
+  body.classList.remove('no-scroll');
+};
+
+menu.querySelectorAll('a:not(.exclude-link)').forEach(link => link.addEventListener('click', closeMenu));
+
+overlay.addEventListener('click', closeMenu);
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+      closeMenu();
+  }
 });
 
 const animals = [
