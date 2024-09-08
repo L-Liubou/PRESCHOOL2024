@@ -14,15 +14,16 @@
         <h1 class="logo__title"><a href="../main/index.html">Cozy House</a></h1>
         <span class="logo__subtitle">Shelter for pets in Boston</span>
     </div>
+    <div class="overlay"></div>
     <nav class="menu">
         <ul class="menu__list">
             <li class="menu__item"><a href="../main/index.html">About the shelter</a></li>
-            <li class="menu__item menu__item--active">Our pets</li>
+            <li class="menu__item menu__item--active"><a href="#" class="exclude-link">Our pets</a></li>
             <li class="menu__item"><a href="../main/index.html#help">Help the shelter</a></li>
             <li class="menu__item"><a href="#footer">Contacts</a></li>
         </ul>
     </nav>
-    <div class="header__burger burger">
+    <div class="header__burger">
         <span class="burger__line burger__line--first"></span>
         <span class="burger__line burger__line--second"></span>
         <span class="burger__line burger__line--third"></span>
@@ -74,14 +75,43 @@
             </div>
         </div>
         <div class="navigation">
-            <button class="navigation-button button-paginator-inactive">&lt;&lt;</button>
-            <button class="navigation-button button-paginator-inactive">&lt;</button>
-            <button class="navigation-button button-paginator-active">1</button>
-            <button class="navigation-button button-paginator">&gt;</button>
-            <button class="navigation-button button-paginator">&gt;&gt;</button>
+            <button class="navigation-button button-paginator-inactive" id="first-page">&lt;&lt;</button>
+            <button class="navigation-button button-paginator-inactive" id="prev-page">&lt;</button>
+            <button class="navigation-button button-paginator-active" id="page-number">1</button>
+            <button class="navigation-button button-paginator" id="next-page">&gt;</button>
+            <button class="navigation-button button-paginator" id="last-page">&gt;&gt;</button>
         </div>
     </main>
 </div>
+<div class="modal-overlay">
+    <div class="modal">
+        <img src="" alt="" class="modal-image">
+        <div class="modal__content">
+            <h3 class="modal__title"></h3>
+            <h4 class="modal__subtitle"></h4>
+            <p class="modal__description"></p>
+            <ul class="modal__list">
+                <li class="modal__list-item">
+                    <span class="modal__list-label">Age:</span>
+                    <span class="modal__list-value"></span>
+                </li>
+                <li class="modal__list-item">
+                    <span class="modal__list-label">Inoculations:</span>
+                    <span class="modal__list-value"></span>
+                </li>
+                <li class="modal__list-item">
+                    <span class="modal__list-label">Diseases:</span>
+                    <span class="modal__list-value"></span>
+                </li>
+                <li class="modal__list-item">
+                    <span class="modal__list-label">Parasites:</span>
+                    <span class="modal__list-value"></span>
+                </li>
+            </ul>
+        </div>
+            <button class="modal__close-button">&times;</button>
+    </div>
+</div>   
 <div class="footer-wrapper">
     <footer id="footer" class="footer container">
         <div class="footer__contacts">

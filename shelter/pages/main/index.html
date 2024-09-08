@@ -16,20 +16,20 @@
                 <h1 class="logo__title"><a href="#">Cozy House</a></h1>
                 <span class="logo__subtitle">Shelter for pets in Boston</span>
             </div>
+            <div class="overlay"></div>
             <nav class="menu">
                 <ul class="menu__list">
-                    <li class="menu__item  menu__item--active"><a href="#">About the shelter</a></li>
+                    <li class="menu__item  menu__item--active"><a href="#" class="exclude-link">About the shelter</a></li>
                     <li class="menu__item"><a href="../pets/index.html">Our pets</a></li>
                     <li class="menu__item"><a href="#help">Help the shelter</a></li>
                     <li class="menu__item"><a href="#footer">Contacts</a></li>
                 </ul>
             </nav>
-            <div class="header__burger burger">
+            <div class="header__burger">
                 <span class="burger__line burger__line--first"></span>
                 <span class="burger__line burger__line--second"></span>
                 <span class="burger__line burger__line--third"></span>
             </div>
-
         </header>
         <div class="start-screen__content">
             <div class="not-only">
@@ -59,7 +59,7 @@
     <section id="our-friends" class="our-friends container">
         <h3 class="our-friends__heading">Our friends who <br>are looking for a house</h3>
         <div class="our-friends__slider">
-            <button class="button--arrow">
+            <button class="button--arrow" id="left-arrow">
                 <img src="../../assets/icons/arrow-left.svg" alt="Left arrow">
             </button>
             <div class="slider__cards">
@@ -79,12 +79,42 @@
                     <button class="button--secondary">Learn more</button>
                 </div>
             </div>
-            <button class="button--arrow">
+            <button class="button--arrow" id="right-arrow">
                 <img src="../../assets/icons/arrow-right.svg" alt="Right arrow">
             </button>
         </div>
         <a href="../pets/index.html" class="button--primary-pets">Get to know the rest</a>
     </section>
+    <div class="modal-overlay">
+        <div class="modal">
+            <img src="" alt="" class="modal-image">
+            <div class="modal__content">
+                <h3 class="modal__title"></h3>
+                <h4 class="modal__subtitle"></h4>
+                <p class="modal__description"></p>
+                <ul class="modal__list">
+                    <li class="modal__list-item">
+                        <span class="modal__list-label">Age:</span>
+                        <span class="modal__list-value"></span>
+                    </li>
+                    <li class="modal__list-item">
+                        <span class="modal__list-label">Inoculations:</span>
+                        <span class="modal__list-value"></span>
+                    </li>
+                    <li class="modal__list-item">
+                        <span class="modal__list-label">Diseases:</span>
+                        <span class="modal__list-value"></span>
+                    </li>
+                    <li class="modal__list-item">
+                        <span class="modal__list-label">Parasites:</span>
+                        <span class="modal__list-value"></span>
+                    </li>
+                </ul>
+            </div>
+                <button class="modal__close-button">&times;</button>
+        </div>
+    </div>
+
 </div>
 <section id="help" class="help container">
     <h3 class="help__heading">How you can help<br>
