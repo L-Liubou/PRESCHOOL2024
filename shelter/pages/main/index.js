@@ -54,7 +54,7 @@ const closeMenu = () => {
   body.classList.remove('no-scroll');
 };
 
-menu.querySelectorAll('a:not(.exclude-link)').forEach(link => link.addEventListener('click', closeMenu));
+menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 
 overlay.addEventListener('click', closeMenu);
 
@@ -207,10 +207,11 @@ const rightArrowButton = document.getElementById('right-arrow');
 let activeCards = [];
 let previousCards = null; 
 let nextCards = null;
+let isAnimating = false; 
 
 const getNumberOfDisplayedCards = () => {
   if (window.innerWidth >= 1077) return 3;
-  if (window.innerWidth >= 767) return 2;
+  if (window.innerWidth >= 767 && window.innerWidth < 1077) return 2;
   return 1;
 };
 
@@ -224,13 +225,23 @@ const getRandomCards = (usedCards = []) => {
 };
 
 const renderCards = () => {
-  cardsContainer.innerHTML = activeCards.map(animal => `
-      <div class="card--pet">
-          <img src="${animal.img}" class="card__image"> 
-          <p class="card__name">${animal.name}</p>
-          <button class="button--secondary">Learn more</button>
-      </div>`
-  ).join('');
+  const createCardHTML = (animal) => `
+    <div class="card--pet">
+      <img src="${animal.img}" class="card__image"> 
+      <p class="card__name">${animal.name}</p>
+      <button class="button--secondary">Learn more</button>
+    </div>`;
+
+  const previousCardsHTML = previousCards ? previousCards.map(createCardHTML).join('') : '';
+  const currentCardsHTML = activeCards.map(createCardHTML).join('');
+  const nextCardsHTML = nextCards ? nextCards.map(createCardHTML).join('') : '';
+
+  const container = document.querySelector('.slider__container');
+  container.innerHTML = `
+    <div class="slider__group slider__previous-slide">${previousCardsHTML}</div>
+    <div class="slider__group slider__current-slide">${currentCardsHTML}</div>
+    <div class="slider__group slider__next-slide">${nextCardsHTML}</div>`;
+
   addClickListenersToCards();
 };
 
@@ -244,35 +255,48 @@ const addClickListenersToCards = () => {
   });
 };
 
+const slideTransition = (direction) => {
+  if (isAnimating) return; 
+  isAnimating = true;
+
+  const container = document.querySelector('.slider__container');
+  container.style.transition = 'transform 1.5s ease-in-out'; 
+  container.style.transform = direction === 'prev' ? 'translateX(100%)' : 'translateX(-100%)';
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      renderCards();
+      container.style.transition = 'none';
+      container.style.transform = 'translateX(0)';
+      isAnimating = false; 
+    }, 1500); 
+  });
+};
+
 const showPreviousCards = () => {
   if (previousCards) {
-    nextCards = [...activeCards]; 
-    activeCards = previousCards;  
-    previousCards = getRandomCards(activeCards);  
-    renderCards();
+    nextCards = [...activeCards];
+    activeCards = previousCards;
+    previousCards = getRandomCards(activeCards);
+    slideTransition('prev');
   } else {
-    previousCards = getRandomCards(activeCards);  
+    previousCards = getRandomCards(activeCards);
     showPreviousCards();
   }
 };
 
+
 const showNextCards = () => {
-  previousCards = [...activeCards];  
-  if (nextCards) {
-    activeCards = nextCards;  
-  } else {
-    activeCards = getRandomCards(previousCards);  
-  }
-  nextCards = getRandomCards(activeCards);  
-  renderCards();
+  previousCards = [...activeCards];
+  activeCards = nextCards || getRandomCards(previousCards);
+  nextCards = getRandomCards(activeCards);
+  slideTransition('next');
 };
 
 const updateCardsOnResize = () => {
   const numberOfCards = getNumberOfDisplayedCards();
-  const newCardSet = getRandomCards([]);
-
   if (activeCards.length !== numberOfCards) {
-    activeCards = newCardSet;
+    activeCards = getRandomCards([]);
     previousCards = null; 
     nextCards = null;
     renderCards();
@@ -280,8 +304,8 @@ const updateCardsOnResize = () => {
 };
 
 const initializeSlider = () => {
-  activeCards = getRandomCards([]); 
-  previousCards = getRandomCards(activeCards); 
+  activeCards = getRandomCards([]);
+  previousCards = getRandomCards(activeCards);
   nextCards = getRandomCards(activeCards);    
   renderCards();
 };
@@ -291,4 +315,3 @@ rightArrowButton.addEventListener('click', showNextCards);
 window.addEventListener('resize', updateCardsOnResize);
 
 initializeSlider();
-

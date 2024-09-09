@@ -19,7 +19,7 @@
             <div class="overlay"></div>
             <nav class="menu">
                 <ul class="menu__list">
-                    <li class="menu__item  menu__item--active"><a href="#" class="exclude-link">About the shelter</a></li>
+                    <li class="menu__item  menu__item--active"><a href="#">About the shelter</a></li>
                     <li class="menu__item"><a href="../pets/index.html">Our pets</a></li>
                     <li class="menu__item"><a href="#help">Help the shelter</a></li>
                     <li class="menu__item"><a href="#footer">Contacts</a></li>
@@ -56,27 +56,33 @@
     </div>
 </section>
 <div class="our-friends-wrapper">
-    <section id="our-friends" class="our-friends container">
+    <section class="our-friends container">
         <h3 class="our-friends__heading">Our friends who <br>are looking for a house</h3>
         <div class="our-friends__slider">
             <button class="button--arrow" id="left-arrow">
                 <img src="../../assets/icons/arrow-left.svg" alt="Left arrow">
             </button>
             <div class="slider__cards">
-                <div class="card--pet">
-                    <img src="../../assets/images/pets-katrine.png" alt="Grey British Shorthair cat named Katrine standing and looking forward" class="card__image">
-                    <p class="card__name">Katrine</p>
-                    <button class="button--secondary">Learn more</button>
-                </div>
-                <div class="card--pet">
-                    <img src="../../assets/images/pets-jennifer.png" alt="Adorable light-colored puppy sitting and looking curious" class="card__image">
-                    <p class="card__name">Jennifer</p>
-                    <button class="button--secondary">Learn more</button>
-                </div>
-                <div class="card--pet">
-                    <img src="../../assets/images/pets-woody.png" alt="Golden Retriever lying down with a happy expression" class="card__image">
-                    <p class="card__name">Woody</p>
-                    <button class="button--secondary">Learn more</button>
+                <div class="slider__container">
+                    <div class="slider__group slider__previous-slide"></div>
+                    <div class="slider__group slider__current-slide">
+                        <div class="card--pet">
+                            <img src="../../assets/images/pets-katrine.png" alt="Grey British Shorthair cat named Katrine standing and looking forward" class="card__image">
+                            <p class="card__name">Katrine</p>
+                            <button class="button--secondary">Learn more</button>
+                        </div>
+                        <div class="card--pet">
+                            <img src="../../assets/images/pets-jennifer.png" alt="Adorable light-colored puppy sitting and looking curious" class="card__image">
+                            <p class="card__name">Jennifer</p>
+                            <button class="button--secondary">Learn more</button>
+                        </div>
+                        <div class="card--pet">
+                            <img src="../../assets/images/pets-woody.png" alt="Golden Retriever lying down with a happy expression" class="card__image">
+                            <p class="card__name">Woody</p>
+                            <button class="button--secondary">Learn more</button>
+                        </div>
+                    </div>
+                    <div class="slider__group slider__next-slide"></div>
                 </div>
             </div>
             <button class="button--arrow" id="right-arrow">
@@ -111,10 +117,9 @@
                     </li>
                 </ul>
             </div>
-                <button class="modal__close-button">&times;</button>
+            <button class="modal__close-button">&times;</button>
         </div>
     </div>
-
 </div>
 <section id="help" class="help container">
     <h3 class="help__heading">How you can help<br>
