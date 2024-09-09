@@ -52,7 +52,7 @@ const closeMenu = () => {
   body.classList.remove('no-scroll');
 };
 
-menu.querySelectorAll('a:not(.exclude-link)').forEach(link => link.addEventListener('click', closeMenu));
+menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 
 overlay.addEventListener('click', closeMenu);
 
@@ -186,14 +186,14 @@ modalOverlay.addEventListener('click', event => {
 });
 
 
-const displayAnimals = [];
+let displayAnimals = []; 
 let activePage = 1;
 let cardsOnPage;
 let totalPages;
 
 const getNumberOfDisplayedCards = () => {
-  if (window.innerWidth >= 1220) return 8;  
-  if (window.innerWidth >= 768 && window.innerWidth < 1220) return 6;  
+  if (window.innerWidth > 1220) return 8;  
+  if (window.innerWidth >= 768 && window.innerWidth <= 1220) return 6;  
   return 3;  
 };
 
@@ -207,18 +207,39 @@ const randomizeArray = (array) => {
 };
 
 const generateAnimalCards = () => {
-  let allPets = [];
-  for (let i = 0; i < 6; i++) {
-    allPets = allPets.concat(randomizeArray([...animals]));
+  const totalPets = 48;
+  const setSize = 8;
+  const maxDuplicates = 6;
+  let allUniquePets = [];
+
+  const getRandomAnimals = (pets, count) => {
+    let randomizedAnimals = pets.slice().sort(() => Math.random() - 0.5);
+    return randomizedAnimals.slice(0, count);
+  };
+
+  const isUniqueEnough = (animalName) => {
+    return allUniquePets.filter(pet => pet.name === animalName).length < maxDuplicates;
+  };
+
+  while (allUniquePets.length < totalPets) {
+    let newPets = getRandomAnimals(animals, setSize);
+    
+    newPets.forEach(pet => {
+      if (isUniqueEnough(pet.name)) {
+        allUniquePets.push(pet);
+      }
+    });
+    if (allUniquePets.length < totalPets) {
+      let uniquePetsCount = new Set(allUniquePets.map(pet => pet.name)).size;
+      if (uniquePetsCount < totalPets) {
+        allUniquePets = allUniquePets.slice(0, totalPets);
+      }
+    }
   }
-  displayAnimals.length = 0; 
-  displayAnimals.push(...allPets);
-  totalPages = getTotalPages(); 
-  renderCards(activePage); 
+  displayAnimals = allUniquePets;
 };
 
 const getTotalPages = () => Math.ceil(displayAnimals.length / (cardsOnPage = getNumberOfDisplayedCards()));
- 
 const renderCards = (page) => {
   const containerCards = document.querySelector('.container__cards');
   const startIndex = (page - 1) * cardsOnPage;
@@ -269,14 +290,13 @@ const goToPage = (page) => {
 };
 
 const updatePagination = () => {
-  const newTotalPages = getTotalPages();
-  if (newTotalPages !== totalPages) {
-    totalPages = newTotalPages;
-    if (activePage > totalPages) {
-      activePage = totalPages;
-    }
-    renderCards(activePage); 
+  cardsOnPage = getNumberOfDisplayedCards();  
+  totalPages = Math.ceil(displayAnimals.length / cardsOnPage);  
+  
+  if (activePage > totalPages) {
+    activePage = totalPages;
   }
+  renderCards(activePage);  
 };
 
 document.getElementById('first-page').addEventListener('click', () => goToPage(1));
@@ -286,6 +306,6 @@ document.getElementById('next-page').addEventListener('click', () => goToPage(ac
 window.addEventListener('resize', updatePagination);
 window.addEventListener('load', () => {
   generateAnimalCards();
-  renderCards(activePage);
+  updatePagination(); 
 });
 
