@@ -396,14 +396,47 @@ a.button--primary {
     display: flex;
     align-items: center;
     width: 100%;
-    gap: 53px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider__container {
+    display: flex;
+    transition: transform 1.5s ease-in-out; 
+    will-change: transform;
+    width: 100%;
+}
+
+.slider__group {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.slider__current-slide {
+    margin: 0 auto;
+} 
+
+.slider__previous-slide,
+.slider__next-slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.slider__previous-slide {
+    left: -100%; 
+    transform: translateX(0);
+}
+
+.slider__next-slide {
+    right: -100%; 
+    transform: translateX(0); 
 }
 
 .slider__cards {
     display: flex;
-    justify-content: space-between;
     width: 100%;
-    gap: 60px;
     overflow: hidden;
 }
 
