@@ -155,17 +155,6 @@ const animals = [
     }
   ];
 
-const preloadImages = (urls) => 
-  Promise.all(urls.map(url => new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = resolve;
-    img.onerror = reject;
-    img.src = url;
-})));
-  
-const imageUrls = animals.map(animal => animal.img);
-  
-preloadImages(imageUrls);
 
 const modalOverlay = document.querySelector('.modal-overlay');
 const modalImage = document.querySelector('.modal-image');
@@ -215,19 +204,24 @@ const getNumberOfDisplayedCards = () => {
   return 1;
 };
 
-const getRandomCards = (usedCards = []) => {
-  const numberOfCards = getNumberOfDisplayedCards();
+const getRandomCards = (usedCards = [], count) => {
   const availableCards = animals.filter(animal => !usedCards.includes(animal));
-  return Array.from({ length: numberOfCards }, () => {
+  if (availableCards.length < count) {
+    return [];
+  }
+  const result = [];
+  for (let i = 0; i < count; i++) {
     const randomIndex = Math.floor(Math.random() * availableCards.length);
-    return availableCards.splice(randomIndex, 1)[0];
-  });
+    result.push(availableCards[randomIndex]);
+    availableCards.splice(randomIndex, 1);
+  }
+  return result;
 };
 
 const renderCards = () => {
   const createCardHTML = (animal) => `
     <div class="card--pet">
-      <img src="${animal.img}" class="card__image"> 
+      <img src="${animal.img}" alt="Image of ${animal.name}, a pet" class="card__image"> 
       <p class="card__name">${animal.name}</p>
       <button class="button--secondary">Learn more</button>
     </div>`;
@@ -274,39 +268,50 @@ const slideTransition = (direction) => {
 };
 
 const showPreviousCards = () => {
+  if (isAnimating) return;
   if (previousCards) {
     nextCards = [...activeCards];
     activeCards = previousCards;
-    previousCards = getRandomCards(activeCards);
+    previousCards = getRandomCards(activeCards, getNumberOfDisplayedCards());
     slideTransition('prev');
   } else {
-    previousCards = getRandomCards(activeCards);
+    previousCards = getRandomCards(activeCards, getNumberOfDisplayedCards());
     showPreviousCards();
   }
 };
 
-
 const showNextCards = () => {
+  if (isAnimating) return;
   previousCards = [...activeCards];
-  activeCards = nextCards || getRandomCards(previousCards);
-  nextCards = getRandomCards(activeCards);
+  activeCards = nextCards || getRandomCards(previousCards, getNumberOfDisplayedCards());
+  nextCards = getRandomCards(activeCards, getNumberOfDisplayedCards());
   slideTransition('next');
 };
 
 const updateCardsOnResize = () => {
   const numberOfCards = getNumberOfDisplayedCards();
   if (activeCards.length !== numberOfCards) {
-    activeCards = getRandomCards([]);
-    previousCards = null; 
-    nextCards = null;
+    const currentCards = [...activeCards];
+    activeCards = getRandomCards([], numberOfCards);
+
+    if (currentCards.length < numberOfCards) {
+      const additionalCards = getRandomCards(currentCards, numberOfCards - currentCards.length);
+      activeCards.push(...additionalCards);
+    } else {
+      activeCards = currentCards.slice(0, numberOfCards);
+    }
+    previousCards = getRandomCards(activeCards, numberOfCards);
+    nextCards = getRandomCards(activeCards, numberOfCards);
+
     renderCards();
   }
 };
 
 const initializeSlider = () => {
-  activeCards = getRandomCards([]);
-  previousCards = getRandomCards(activeCards);
-  nextCards = getRandomCards(activeCards);    
+  const numberOfCards = getNumberOfDisplayedCards();
+  activeCards = getRandomCards([], numberOfCards);
+  previousCards = getRandomCards(activeCards, numberOfCards);
+  nextCards = getRandomCards(activeCards, numberOfCards);    
   renderCards();
 };
 
