@@ -197,29 +197,20 @@ const getNumberOfDisplayedCards = () => {
   return 3;  
 };
 
-const randomizeArray = (array) => {
-  let randomArray = array.slice(); 
-  for (let i = randomArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [randomArray[i], randomArray[j]] = [randomArray[j], randomArray[i]]; 
-  }
-  return randomArray;
-};
-
 const generateAnimalCards = () => {
   const totalPets = 48;
   const setSize = 8;
   const maxDuplicates = 6;
   let allUniquePets = [];
 
-  const getRandomAnimals = (pets, count) => {
-    let randomizedAnimals = pets.slice().sort(() => Math.random() - 0.5);
-    return randomizedAnimals.slice(0, count);
-  };
+const getRandomAnimals = (pets, count) => {
+  let randomizedAnimals = pets.slice().sort(() => Math.random() - 0.5);
+  return randomizedAnimals.slice(0, count);
+};
 
-  const isUniqueEnough = (animalName) => {
-    return allUniquePets.filter(pet => pet.name === animalName).length < maxDuplicates;
-  };
+const isUniqueEnough = (animalName) => {
+  return allUniquePets.filter(pet => pet.name === animalName).length < maxDuplicates;
+};
 
   while (allUniquePets.length < totalPets) {
     let newPets = getRandomAnimals(animals, setSize);
@@ -239,7 +230,6 @@ const generateAnimalCards = () => {
   displayAnimals = allUniquePets;
 };
 
-const getTotalPages = () => Math.ceil(displayAnimals.length / (cardsOnPage = getNumberOfDisplayedCards()));
 const renderCards = (page) => {
   const containerCards = document.querySelector('.container__cards');
   const startIndex = (page - 1) * cardsOnPage;
@@ -251,7 +241,7 @@ const renderCards = (page) => {
 
   containerCards.innerHTML = pageCards.map(animal => `
     <div class="card--pet">
-      <img src="${animal.img}" class="card__image"> 
+      <img src="${animal.img}" alt="Image of ${animal.name}, a pet" class="card__image"> 
       <p class="card__name">${animal.name}</p>
       <button class="button--secondary">Learn more</button>
     </div>`
