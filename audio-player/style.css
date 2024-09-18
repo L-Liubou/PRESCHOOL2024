@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Mulish", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #1a1919;
+    min-width: 360px;
+}
+
+.player {
+    position: relative;
+    width: 350px;
+    height: 650px;
+    padding: 25px 30px;
+    border-radius: 15px;
+    background: #131313;
+    box-shadow: 0px 10px 20px 10px #4f2f1a21;
+    overflow: hidden;
+}
+
+.player__top span {
+    color: #f36d0766;
+}
+
+.player__top i {
+    color:#484c4f;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.player__top i:hover {
+    color:#d45808;
+}
+
+.progress__time,
+.player__top,
+.progress__bar,
+.player__controls,
+.playlist .playlist__header,
+.playlist ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.player__image {
+    height: 280px;
+    border-radius: 50%;
+    margin: 30px auto;
+    background-image: url('assets/img/louis-picard-by-louis-picard-perfect-blue-characters-illustr.jpg');
+    background-size:cover;
+    border: 3px solid #292c2d;
+    animation: rotate 20s linear infinite;
+    animation-play-state: paused;
+}
+
+.player__image.play {
+    animation-play-state: running;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.player__info {
+    text-align: center;
+    margin: 40px 0 35px;
+    opacity: 0.9;
+    color: #8e9499;
+}
+
+
+.player__progress {
+    width: 100%;
+    /* position: relative; */
+}
+
+.progress__bar {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    background:#8e9499;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+}
+
+.progress__bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1px;
+    height: 20px;
+    box-shadow: -400px 0 0 400px #d45808;
+}
+
+.progress__time {
+    margin-top: 10px;
+}
+
+.progress__time span {
+    color:#8e9499;
+}
+
+.player__controls {
+    margin: 50px 0 5px 0;
+}
+
+.button {
+    cursor: pointer;
+    border: 0;
+    background: inherit;
+    color:#8e9499;
+    transition: background-color 0.3s ease;
+}
+
+.button.repeat, .button.list {
+    color: #313436;
+}
+
+.button:hover {
+    color:#d45808;
+}
+
+.button.play {
+    width: 40px;
+    height: 38px;
+    border: 2px solid #d45808;
+    border-radius: 10px;
+    color: #d45808;
+}
+
+.button.play:hover {
+    color:#d2dae0;
+    background-color:#d45808;
+}
+
+.playlist {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: 5;
+    background-color:#d45808;
+    padding: 15px 30px;
+    border-radius: 15px;
+    bottom: -55%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.15s ease-in-out;
+}
+
+.playlist .open {
+    opacity: 1;
+    bottom: 0;
+    pointer-events: auto;
+}
+
+.playlist__header i {
+    cursor: pointer;
+}
+
+.playlist__header i:hover {
+    color: #d2dae0;
+}
+
+.playlist__tracks {
+    margin-top: 10px;
+    max-height: 260px;
+    overflow: auto;
+}
+
+.tracks__item {
+    list-style: none;
+    display: flex;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-bottom: 1px solid #d2dae0;
+    transition: all 0.3s ease;
+}
+
+.tracks__item:hover {
+    color: #d2dae0;
+}
+
+.playlist ul li:last-child {
+    border-bottom: 0px;
+}
+
+.item__artist{
+    opacity: 0.6;
+}
+
+.playlist__tracks::-webkit-scrollbar {
+    width: 0;
+}
+
+.playlist__row {
+    display: flex;
+    align-items:center;
+    gap: 9px;
+}
