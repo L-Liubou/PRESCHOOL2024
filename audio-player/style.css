@@ -27,25 +27,26 @@ body {
     overflow: hidden;
 }
 
-.player__top span {
-    color: #f36d0766;
+.player__upper-area span {
+    color: #49230a;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
 }
 
-.player__top i {
-    color:#484c4f;
+.heart-icon {
+    color:#d45808;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-.player__top i:hover {
+.heart-icon.active {
     color:#d45808;
 }
 
 .progress__time,
-.player__top,
+.player__upper-area,
 .progress__bar,
 .player__controls,
-.playlist .playlist__header,
 .playlist ul li {
     display: flex;
     justify-content: space-between;
@@ -56,10 +57,10 @@ body {
     height: 280px;
     border-radius: 50%;
     margin: 30px auto;
-    background-image: url('assets/img/louis-picard-by-louis-picard-perfect-blue-characters-illustr.jpg');
+    background-image: url('assets/img/Luna Bright.JPG');
     background-size:cover;
     border: 3px solid #292c2d;
-    animation: rotate 20s linear infinite;
+    animation: rotate 35s linear infinite;
     animation-play-state: paused;
 }
 
@@ -78,22 +79,19 @@ body {
 
 .player__info {
     text-align: center;
-    margin: 40px 0 35px;
+    margin: 40px 0;
     opacity: 0.9;
     color: #8e9499;
 }
 
-
 .player__progress {
     width: 100%;
-    /* position: relative; */
 }
 
 .progress__bar {
-    -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 3px;
+    height: 4px;
     border-radius: 10px;
     background:#8e9499;
     overflow: hidden;
@@ -116,8 +114,39 @@ body {
     color:#8e9499;
 }
 
+.volume-control {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    gap: 40px;
+    width: 100%;
+}
+
+.volume-control__icon {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #484c4f;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.volume-control__level {
+    font-size: 16px;
+    color: #484c4f;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.volume-control__level.active {
+    opacity: 0.8;
+}
+
+.volume-control__icon:hover {
+    color: #c5beba;
+}
+
 .player__controls {
-    margin: 50px 0 5px 0;
+    margin: 40px 0 5px 0;
 }
 
 .button {
@@ -125,7 +154,7 @@ body {
     border: 0;
     background: inherit;
     color:#8e9499;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .button.repeat, .button.list {
@@ -134,6 +163,10 @@ body {
 
 .button:hover {
     color:#d45808;
+}
+
+.button.repeat.active {
+    color:#fcfbfb;
 }
 
 .button.play {
@@ -153,28 +186,35 @@ body {
     position: absolute;
     width: 100%;
     left: 0;
-    z-index: 5;
+    z-index: 1;
     background-color:#d45808;
     padding: 15px 30px;
     border-radius: 15px;
-    bottom: -55%;
-    opacity: 0;
+    bottom: -51%;
+    /* opacity: 0; */
     pointer-events: none;
-    transition: all 0.15s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
-.playlist .open {
-    opacity: 1;
+.playlist.open {
+    /* opacity: 1; */
     bottom: 0;
     pointer-events: auto;
 }
 
 .playlist__header i {
     cursor: pointer;
+    transform: rotate(280deg) scaleX(-1);
 }
 
 .playlist__header i:hover {
     color: #d2dae0;
+}
+
+.playlist__header-row {
+    display: flex;
+    align-items:center;
+    gap: 12px;
 }
 
 .playlist__tracks {
@@ -207,10 +247,4 @@ body {
 
 .playlist__tracks::-webkit-scrollbar {
     width: 0;
-}
-
-.playlist__row {
-    display: flex;
-    align-items:center;
-    gap: 9px;
 }
