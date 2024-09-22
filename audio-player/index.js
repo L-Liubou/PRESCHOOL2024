@@ -100,7 +100,10 @@ let musicIndex = 0;
 let isPlaying = false;
 
 window.addEventListener('load', ()=>{
+    mainAudio.volume = 0.5; 
+    currentTimeDisplay.innerText = formatTime(0);
     loadMusic(musicIndex);
+    updateVolumeLevel();
 });
 
 function loadMusic(musicIndex) {
@@ -169,34 +172,21 @@ const volumeUp = document.querySelector('.volume-up');
 const volumeLevel = document.querySelector('.volume-control__level');
 
 function updateVolumeLevel() {
-    let volumePercent = Math.floor(mainAudio.volume * 100);
+    const volumePercent = Math.round(mainAudio.volume * 100);
     volumeLevel.textContent = `${volumePercent}%`;
+    volumeDown.disabled = mainAudio.volume === 0; 
+    volumeUp.disabled = mainAudio.volume === 1; 
 }
 
-window.addEventListener('load', () => {
-    mainAudio.volume = 0.5;
-    updateVolumeLevel();
-});
-
-volumeDown.addEventListener('click', () => {
-    mainAudio.volume = Math.max(0, mainAudio.volume - 0.1);
+function changeVolume(step) {
+    mainAudio.volume = Math.min(1, Math.max(0, (mainAudio.volume + step).toFixed(1)));
     updateVolumeLevel();
     volumeLevel.classList.add('active');
+    setTimeout(() => volumeLevel.classList.remove('active'), 1000);
+}
 
-    setTimeout(() => {
-        volumeLevel.classList.remove('active');
-    }, 1000);
-});
-
-volumeUp.addEventListener('click', () => {
-    mainAudio.volume = Math.min(1, mainAudio.volume + 0.1);
-    updateVolumeLevel();
-    volumeLevel.classList.add('active');
-
-    setTimeout(() => {
-        volumeLevel.classList.remove('active');
-    }, 1000);
-});
+volumeDown.addEventListener('click', () => changeVolume(-0.1));
+volumeUp.addEventListener('click', () => changeVolume(0.1));
 
 // ! audio duration
 mainAudio.addEventListener('loadedmetadata', () => {
