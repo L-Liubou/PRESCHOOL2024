@@ -14,9 +14,8 @@ body {
     align-items: center;
     height: 100vh;
     min-width: 360px;
-    background: 
-    linear-gradient(135deg, #222222, #141414), 
-    radial-gradient(circle at top left, rgba(100, 100, 100, 0.2), transparent 70%); 
+    background: linear-gradient(135deg, #222222, #141414),
+    radial-gradient(circle at top left, rgba(100, 100, 100, 0.2), transparent 70%);
     background-blend-mode: multiply;
 }
 
@@ -39,8 +38,7 @@ body {
     padding: 25px 30px;
     border-radius: 15px;
     background: #131313;
-    box-shadow: 
-    0 5px 15px 5px rgba(0, 0, 0, 0.6),
+    box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.6),
     0 5px 15px 2px rgba(212, 88, 8, 0.1);
     overflow: hidden;
 }
@@ -48,17 +46,17 @@ body {
 .player__upper-area {
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
 }
 
 .player__upper-area span {
-    color:#8e9499;
+    color: #8e9499;
     opacity: 0.3;
     pointer-events: none;
 }
 
 .heart-icon {
-    color:#d45808;
+    color: #d45808;
     opacity: 0.7;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -70,7 +68,7 @@ body {
 }
 
 .heart-icon.active {
-    color:#d45808;
+    color: #d45808;
 }
 
 .player__image {
@@ -78,7 +76,7 @@ body {
     border-radius: 50%;
     margin: 20px auto;
     background-image: url('assets/img/Chloe_Sparkle.JPG');
-    background-size:cover;
+    background-size: cover;
     animation: rotate 35s linear infinite;
     animation-play-state: paused;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -110,7 +108,7 @@ body {
 
 .player__info {
     display: flex;
-    align-items:flex-end;
+    align-items: flex-end;
     justify-content: space-between;
 }
 
@@ -120,7 +118,7 @@ body {
     transition: color 0.3s ease;
 }
 
-.button.repeat:hover, 
+.button.repeat:hover,
 .button.list:hover {
     color: #c5beba;
 }
@@ -132,13 +130,13 @@ body {
 .player__controls {
     display: flex;
     justify-content: space-evenly;
-    align-items:center;
+    align-items: center;
     padding: 12px 0 25px;
 }
 
 .button.next,
 .button.prev {
-    color:#d45808;
+    color: #d45808;
     opacity: 0.7;
     transition: all 0.3s ease;
 }
@@ -164,8 +162,8 @@ body {
 
 .button.play:hover,
 .button.play.active {
-    color:#d2dae0;
-    background-color:#d45808;
+    color: #d2dae0;
+    background-color: #d45808;
 }
 
 .progress__bar {
@@ -174,7 +172,7 @@ body {
     width: 100%;
     height: 4px;
     border-radius: 10px;
-    background:#45484b;
+    background: #45484b;
     overflow: hidden;
     cursor: pointer;
     outline: none;
@@ -195,7 +193,7 @@ body {
 }
 
 .progress__time span {
-    color:#8e9499;
+    color: #8e9499;
 }
 
 .volume-control {
@@ -220,7 +218,7 @@ body {
     color: #484c4f;
     opacity: 0;
     transition: opacity 0.3s ease;
-    width: 40px; 
+    width: 40px;
     text-align: center;
 }
 
@@ -292,16 +290,16 @@ body {
     padding: 7px 0;
     cursor: pointer;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
 .tracks__item:hover {
-    transform: translateY(-3px); 
+    transform: translateY(-3px);
 }
 
 .tracks__item.active:hover {
-    transform: none; 
+    transform: none;
 }
 
 .item__button {
@@ -342,7 +340,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 350px; 
+    width: 350px;
     padding-bottom: 12px;
     background-color: inherit;
 }
@@ -367,7 +365,7 @@ body {
     cursor: pointer;
     width: 26px;
     transition: scale 0.3s ease;
-} 
+}
 
 .school-icon:hover {
     scale: 1.1;
