@@ -132,39 +132,22 @@ function pauseMusic(){
 }
 
 function playNext() {
-    musicIndex++;
-    if (musicIndex > allMusic.length - 1) {
-        musicIndex = 0;
-    }
+    musicIndex = (musicIndex + 1) % allMusic.length; 
     loadMusic(musicIndex);
-    if (isPlaying) {
-        playMusic();
-    }
+    if (isPlaying) playMusic();
+    updatePlaylist();
 }
 
 function playPrev() {
-    musicIndex--;
-    if (musicIndex < 0) {
-        musicIndex = allMusic.length - 1;
-    }
+    musicIndex = (musicIndex - 1 + allMusic.length) % allMusic.length; 
     loadMusic(musicIndex);
-    if (isPlaying) {
-        playMusic();
-    }
+    if (isPlaying) playMusic();
+    updatePlaylist();
 }
 
-playButton.addEventListener('click', () => {
-    const isPlayed = player.classList.contains('played');
-    isPlayed ? pauseMusic() : playMusic();
-});
-
-nextButton.addEventListener('click',() => {
-    playNext();
-});
-
-prevButton.addEventListener('click',() => {
-    playPrev();
-});
+playButton.addEventListener('click', togglePlay);
+nextButton.addEventListener('click', playNext);
+prevButton.addEventListener('click', playPrev);
 
 // ! volume control
 const volumeDown = document.querySelector('.volume-down');
