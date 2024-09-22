@@ -106,12 +106,6 @@ window.addEventListener('load', ()=>{
     updateVolumeLevel();
 });
 
-function loadMusic(musicIndex) {
-    if (musicIndex >= 0 && musicIndex < allMusic.length) {
-    playerTitle.innerText = allMusic[musicIndex].title;
-    playerArtist.innerText = allMusic[musicIndex].artist;
-    playerImage.style.backgroundImage = `url('${allMusic[musicIndex].img}')`;
-    mainAudio.src = allMusic[musicIndex].src;
 mainAudio.addEventListener('ended', () => {
     if (isRepeat) {
         mainAudio.currentTime = 0;
@@ -121,7 +115,20 @@ mainAudio.addEventListener('ended', () => {
     }
 });
 
+function loadMusic(index) {
+    if (index >= 0 && index < allMusic.length) {
+        playerTitle.innerText = allMusic[index].title;
+        playerArtist.innerText = allMusic[index].artist;
+        playerImage.style.backgroundImage = `url('${allMusic[index].img}')`;
+        mainAudio.src = allMusic[index].src;
+        totalTimeDisplay.innerText = allMusic[index].duration; 
+        updateHeartIcon(); 
     }
+}
+
+function togglePlay() {
+    isPlaying ? pauseMusic() : playMusic();
+    playButton.classList.toggle('active', isPlaying);
 }
 
 function playMusic() {
@@ -317,14 +324,3 @@ playlistTracks.addEventListener('click', (event) => {
 
 renderPlaylist();
 updatePlaylist();
-
-
-
-
-
-
-
-
-
-
-
