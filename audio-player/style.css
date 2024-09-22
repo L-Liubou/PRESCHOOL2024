@@ -253,3 +253,42 @@ body {
 .playlist__tracks::-webkit-scrollbar {
     width: 0;
 }
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 350px; 
+    padding: 12px 0 3px;
+    background-color: inherit;
+    border-radius: 0 0 15px 15px;
+      /* border-left: 3px solid #131313; 
+    border-right: 3px solid #131313;  */
+    border-bottom: 2px solid #131313; 
+}
+
+.footer span {
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.github-icon {
+    cursor: pointer;
+    opacity: 0.5;
+    width: 24px;
+    transition: opacity 0.3s ease;
+}
+
+.github-icon:hover {
+    opacity: 1;
+}
+
+.school-icon {
+    cursor: pointer;
+    width: 26px;
+    transition: scale 0.3s ease;
+} 
+
+.school-icon:hover {
+    scale: 1.1;
+}
