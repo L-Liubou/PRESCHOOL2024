@@ -121,14 +121,16 @@ function playMusic() {
     mainAudio.play();
     playerImage.classList.add('play');
     isPlaying = true;
+    updatePlaylist();
 }
 
-function pauseMusic(){
+function pauseMusic() {
     player.classList.remove('played');
     playButton.querySelector('i').innerText = 'play_arrow';
     mainAudio.pause();
     playerImage.classList.remove('play');
     isPlaying = false;
+    updatePlaylist();
 }
 
 function playNext() {
@@ -239,7 +241,6 @@ function closePlaylist() {
 
 //! create playlist
 const playlistTracks = document.querySelector('.playlist__tracks');
-let currentTrackIndex = 0;
 
 function createTrackItem(track, index) {
     const li = document.createElement('li');
@@ -249,8 +250,11 @@ function createTrackItem(track, index) {
         <div class="item__info">
             <span class="item__title">${track.title}</span>
             <p class="item__artist">${track.artist}</p>
+            <span class="item__duration">${track.duration}</span>
         </div>
-        <div class="item__duration">${track.duration}</div>
+         <button class="item__button">
+            <i class="material-icons">play_arrow</i>
+        </button>
     `;
     return li;
 }
@@ -265,26 +269,37 @@ function renderPlaylist() {
 //! update playlist
 function updatePlaylist() {
     const allTracks = document.querySelectorAll('.tracks__item');
-    allTracks.forEach((track, musicIndex) => {
-        const duration = track.querySelector('.item__duration');
-        if (musicIndex === currentTrackIndex) {
-            track.classList.add('active');
-            duration.innerText = 'playing';
-            duration.classList.add('playing');
-        } else {
-            track.classList.remove('active');
-            duration.innerText = allMusic[musicIndex].duration;
-            duration.classList.remove('playing');
-        }
-    });
+    allTracks.forEach((track, index) => {
+        const itemButton = track.querySelector('.item__button');
+    if (index === musicIndex) {
+        track.classList.add('active');
+        itemButton.classList.add('active');
+        itemButton.innerHTML = isPlaying ? `<i class="material-icons">pause</i>` : `<i class="material-icons">play_arrow</i>`;
+    } else {
+        track.classList.remove('active');
+        itemButton.classList.remove('active');
+        itemButton.innerHTML = `<i class="material-icons">play_arrow</i>`;
+    }
+});
 }
 
 playlistTracks.addEventListener('click', (event) => {
     const item = event.target.closest('.tracks__item');
+    const itemButton = event.target.closest('.item__button');
+
+    if (itemButton) {
+        event.stopPropagation();
+    }
+
     if (item) {
-        currentTrackIndex = parseInt(item.dataset.index, 10);
-        loadMusic(currentTrackIndex);
-        playMusic();
+        const trackIndex = parseInt(item.dataset.index, 10);
+        if (trackIndex === musicIndex) {
+            togglePlay();
+        } else {
+            musicIndex = trackIndex;
+            loadMusic(musicIndex);
+            playMusic();
+        }
         updatePlaylist();
     }
 });
