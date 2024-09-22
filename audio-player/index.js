@@ -4,56 +4,64 @@ let allMusic = [
         artist:'Luna Bright',
         img:'assets/img/Luna_Bright.JPG',
         src:'assets/audio/Chasing_Sunbeams-Luna_Bright.mp3',
-        duration:'1:15'
+        duration:'1:15',
+        liked: false
     },
     {
         title:'Cozy Mornings',
         artist:'Oliver & Sound',
         img:'assets/img/Oliver.JPG',
         src:'assets/audio/Cozy_Mornings-Oliver&Sound.mp3',
-        duration:'1:35'
+        duration:'1:35',
+        liked: false
     },
     {
         title:'Feline Fiesta',
         artist:'Kitty Bliss',
         img:'assets/img/Kitty_Bliss.JPG',
         src:'assets/audio/Feline_Fiesta-Kitty_Bliss.mp3',
-        duration:'2:39'
+        duration:'2:39',
+        liked: false
     },
     {
         title:'Gentle Paws',
         artist:'Sunny Whiskers',
         img:'assets/img/Sunny_Whiskers.JPG',
         src:'assets/audio/Gentle_Paws-Sunny_Whiskers.mp3',
-        duration:'1:52'
+        duration:'1:52',
+        liked: false
     },
     {
         title:'Meowgical Moments',
         artist:'Chloe Sparkle',
         img:'assets/img/Chloe_Sparkle.JPG',
         src:'assets/audio/Meowgical_Moments-Chloe_Sparkle.mp3',
-        duration:'1:57'
+        duration:'1:57',
+        liked: false
     },
     {
         title:'Paws & Sunshine',
         artist:'Mia Melody',
         img:'assets/img/Mia.JPG',
         src:'assets/audio/Paws&Sunshine-Mia_Melody.mp3',
-        duration:'2:15'
+        duration:'2:15',
+        liked: false
     },
     {
         title:'Purrfectly Happy',
         artist:'Tom & Harmony',
         img:'assets/img/Tom.JPG',
         src:'assets/audio/Purrfectly_Happy-Tom&Harmony.mp3',
-        duration:'1:40'
+        duration:'1:40',
+        liked: false
     },
     {
         title:'Whiskers on Fire',
         artist:'Felix Tune',
         img:'assets/img/Felix_Tune.JPG',
         src:'assets/audio/Whiskers_on_Fire-Felix_Tune.mp3',
-        duration:'1:10'
+        duration:'1:10',
+        liked: false
     }
 ]
 
@@ -69,18 +77,23 @@ const progressBar = document.querySelector('.progress__bar');
 const currentTimeDisplay = document.querySelector('.time__current');
 const totalTimeDisplay = document.querySelector('.time__total');
 const playlist = document.querySelector('.playlist');
-
-
-
 const heartIcon = document.querySelector('.heart-icon');
-let isFavorite = false;
+
 
 heartIcon.addEventListener('click', () => {
-    isFavorite = !isFavorite;
-    heartIcon.innerText = isFavorite ? 'favorite' : 'favorite_border';
-    heartIcon.classList.toggle('active');
-
+    allMusic[musicIndex].liked = !allMusic[musicIndex].liked; 
+    updateHeartIcon(); 
 });
+
+function updateHeartIcon() {
+    if (allMusic[musicIndex].liked) {
+        heartIcon.innerText = 'favorite'; 
+        heartIcon.classList.add('active'); 
+    } else {
+        heartIcon.innerText = 'favorite_border'; 
+        heartIcon.classList.remove('active'); 
+    }
+}
 
 //! play / pause
 let musicIndex = 0;
