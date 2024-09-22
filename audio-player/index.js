@@ -221,17 +221,11 @@ mainAudio.addEventListener('ended', () => {
 const openListButton = document.querySelector('.button.list');
 const closeListButton = document.querySelector('.button.close');
 
-function closePlaylist() {
-    playlist.classList.remove('open');
-}
-
 openListButton.addEventListener('click', () => {
     playlist.classList.add('open');
 });
 
-closeListButton.addEventListener('click', () => {
-    closePlaylist();
-});
+closeListButton.addEventListener('click', closePlaylist);
 
 document.addEventListener('click', (event) => {
     if (!playlist.contains(event.target) && !openListButton.contains(event.target) && !closeListButton.contains(event.target)) {
@@ -239,6 +233,9 @@ document.addEventListener('click', (event) => {
     }
 });
 
+function closePlaylist() {
+    playlist.classList.remove('open');
+}
 
 //! create playlist
 const playlistTracks = document.querySelector('.playlist__tracks');
