@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="player-wrapper">
+    <div class="player">
+        <div class="player__upper-area">
+            <i class="material-icons heart-icon">favorite_border</i>
+            <span>Playing Now</span>
+        </div>
+        <div class="player__image"></div>
+        <div class="player__info">
+            <button class="button repeat">
+                <i class="material-icons">repeat</i>
+            </button>
+            <div class="player__details">
+                <h2 class="player__title">Title</h2>
+                <h4 class="player__artist">Artist</h4>
+            </div>
+            <button class="button list">
+                <i class="material-icons">queue_music</i>
+            </button>
+        </div>
+        <div class="player__controls">
+            <button class="button prev">
+                <i class="material-icons">fast_rewind</i>
+            </button>
+            <button class="button play">
+                <i class="material-icons">play_arrow</i>
+            </button>
+            <button class="button next">
+                <i class="material-icons">fast_forward</i>
+            </button>
+        </div>
+        <div class="player__progress">
+            <input type="range" id="progress-bar" value="0" class="progress__bar">
+            <label for="progress-bar"></label>
+            <div class="progress__time">
+                <span class="time__current"></span>
+                <span class="time__total"></span>
+            </div>
+            <audio id="main-audio"></audio>
+        </div>
+        <div class="volume-control">
+            <button class="volume-control__icon material-icons volume-down">volume_down</button>
+            <div class="volume-control__level"></div>
+            <button class="volume-control__icon material-icons volume-up">volume_up</button>
+        </div>
+        <div class="playlist">
+            <div class="playlist__header">
+                <span>Playlist</span>
+                <button class="button close">
+                    <i class="material-icons">close</i>
+                </button>
+            </div>
+            <ul class="playlist__tracks"></ul>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <a href="https://github.com/L-Liubou" target="_blank">
+        <img src="assets/svg/github.svg" class="github-icon" alt="github icon">
+    </a>
+    <span>2024</span>
+    <a href="https://rs.school/courses/javascript-preschool-ru" target="_blank">
+        <img src="assets/svg/rss-logo.svg" class="school-icon" alt="school icon">
+    </a>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
