@@ -112,6 +112,15 @@ function loadMusic(musicIndex) {
     playerArtist.innerText = allMusic[musicIndex].artist;
     playerImage.style.backgroundImage = `url('${allMusic[musicIndex].img}')`;
     mainAudio.src = allMusic[musicIndex].src;
+mainAudio.addEventListener('ended', () => {
+    if (isRepeat) {
+        mainAudio.currentTime = 0;
+        playMusic();
+    } else {
+        playNext();
+    }
+});
+
     }
 }
 
@@ -206,8 +215,10 @@ repeatButton.addEventListener('click', () => {
     repeatButton.classList.toggle('active', isRepeat);
 
     if (isRepeat) {
+        repeatButton.classList.add('active');
         repeatButton.querySelector('i').innerText = 'repeat_one';
     } else {
+        repeatButton.classList.remove('active');
         repeatButton.querySelector('i').innerText = 'repeat';
     }
 });
