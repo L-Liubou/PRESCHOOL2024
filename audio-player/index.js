@@ -28,7 +28,7 @@ let allMusic = [
   {
     title: "Chasing Sunbeams",
     artist: "Luna Bright",
-    img: "assets/img/Luna_Bright.JPG",
+    img: "assets/img/Luna_Bright.jpg",
     src: "assets/audio/Chasing_Sunbeams-Luna_Bright.mp3",
     duration: "1:15",
     liked: false,
@@ -36,7 +36,7 @@ let allMusic = [
   {
     title: "Cozy Mornings",
     artist: "Oliver & Sound",
-    img: "assets/img/Oliver.JPG",
+    img: "assets/img/Oliver.jpg",
     src: "assets/audio/Cozy_Mornings-Oliver&Sound.mp3",
     duration: "1:35",
     liked: false,
@@ -44,7 +44,7 @@ let allMusic = [
   {
     title: "Feline Fiesta",
     artist: "Kitty Bliss",
-    img: "assets/img/Kitty_Bliss.JPG",
+    img: "assets/img/Kitty_Bliss.jpg",
     src: "assets/audio/Feline_Fiesta-Kitty_Bliss.mp3",
     duration: "2:39",
     liked: false,
@@ -52,7 +52,7 @@ let allMusic = [
   {
     title: "Gentle Paws",
     artist: "Sunny Whiskers",
-    img: "assets/img/Sunny_Whiskers.JPG",
+    img: "assets/img/Sunny_Whiskers.jpg",
     src: "assets/audio/Gentle_Paws-Sunny_Whiskers.mp3",
     duration: "1:52",
     liked: false,
@@ -60,7 +60,7 @@ let allMusic = [
   {
     title: "Meowgical Moments",
     artist: "Chloe Sparkle",
-    img: "assets/img/Chloe_Sparkle.JPG",
+    img: "assets/img/Chloe_Sparkle.jpg",
     src: "assets/audio/Meowgical_Moments-Chloe_Sparkle.mp3",
     duration: "1:57",
     liked: false,
@@ -68,7 +68,7 @@ let allMusic = [
   {
     title: "Paws & Sunshine",
     artist: "Mia Melody",
-    img: "assets/img/Mia.JPG",
+    img: "assets/img/Mia.jpg",
     src: "assets/audio/Paws&Sunshine-Mia_Melody.mp3",
     duration: "2:15",
     liked: false,
@@ -76,7 +76,7 @@ let allMusic = [
   {
     title: "Purrfectly Happy",
     artist: "Tom & Harmony",
-    img: "assets/img/Tom.JPG",
+    img: "assets/img/Tom.jpg",
     src: "assets/audio/Purrfectly_Happy-Tom&Harmony.mp3",
     duration: "1:40",
     liked: false,
@@ -84,7 +84,7 @@ let allMusic = [
   {
     title: "Whiskers on Fire",
     artist: "Felix Tune",
-    img: "assets/img/Felix_Tune.JPG",
+    img: "assets/img/Felix_Tune.jpg",
     src: "assets/audio/Whiskers_on_Fire-Felix_Tune.mp3",
     duration: "1:10",
     liked: false,
