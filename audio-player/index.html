@@ -17,8 +17,27 @@
     </div>
     <div class="player__image"></div>
     <div class="player__info">
-        <h2 class="player__title">Title</h2>
-        <h4 class="player__artist">Artist</h4>
+        <button class="button replay">
+            <i class="material-icons">replay</i>
+        </button>
+        <div class="player__details">
+            <h2 class="player__title">Title</h2>
+            <h4 class="player__artist">Artist</h4>
+        </div>
+        <button class="button list">
+            <i class="material-icons">queue_music</i>
+        </button>
+    </div>
+    <div class="player__controls">
+        <button class="button prev">
+            <i class="material-icons">fast_rewind</i>
+        </button>
+        <button class="button play">
+            <i class="material-icons">play_arrow</i>
+        </button>
+        <button class="button next">
+            <i class="material-icons">fast_forward</i>
+        </button>
     </div>
     <div class="player__progress">
         <input type="range" id="progress-bar" value="0" class="progress__bar">
@@ -34,30 +53,13 @@
         <div class="volume-control__level"></div>
         <button class="volume-control__icon material-icons volume-up">volume_up</button>
     </div>
-    <div class="player__controls">
-        <button class="button repeat">
-            <i class="material-icons">repeat</i>
-        </button>
-        <button class="button prev">
-            <i class="material-icons">fast_rewind</i>
-        </button>
-        <button class="button play">
-            <i class="material-icons">play_arrow</i>
-        </button>
-        <button class="button next">
-            <i class="material-icons">fast_forward</i>
-        </button>
-        <button class="button list">
-            <i class="material-icons">queue_music</i>
-        </button>
-    </div>
     <div class="playlist">
         <div class="playlist__header">
             <div class="playlist__header-row">
-                <button class="button close">
-                    <i class="material-icons">switch_access_shortcut</i>
-                </button>
                 <span>Playlist</span>
+                <button class="button close">
+                    <i class="material-icons">close</i>
+                </button>
             </div>
             <ul class="playlist__tracks"></ul>
         </div>
