@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 420px;
+    background: linear-gradient(135deg, #fde2e4 0%, #fad4d8 25%, #bbd0ff 50%, #c7f9cc 75%, #f1f4d4 100%);
+    min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
+}
+
+.header__nav {
+    padding: 40px 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__icon {
+    width: 50px;
+}
+
+.header__title {
+    font-size: x-large;
+    opacity: 0.6;
+}
+
+.header__subtitle {
+    font-size: large;
+    font-weight: 200;
+    padding-top: 7px;
+    color: #5b4c4d;
+}
+
+.header__search-box {
+    margin: 40px 0 5px;
+    position: relative;
+}
+
+.search-input {
+    width: 400px;
+    height: 40px;
+    outline: none;
+    border: 2px solid #e9c5c8;
+    border-radius: 10px;
+    padding: 7px 35px;
+    background: inherit;
+    font-size: unset;
+    color: #5b4c4d;
+}
+
+.message-container {
+    display: flex;
+    align-items: center;
+    font-size: medium;
+    font-weight: 200;
+    padding: 0 17px 15px;
+    color: #5b4c4d;
+}
+
+.query-message {
+    font-size: xx-large;
+    font-weight: 600;
+    opacity: 0.6;
+}
+
+button,
+.download-button {
+    border: none;
+    background: inherit;
+    cursor: pointer;
+    height: 24px;
+}
+
+.clear-button,
+.search-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #90797b;
+    transition: color 0.3s ease;
+}
+
+.clear-button:hover,
+.search-button:hover {
+    color: #5b4c4d;
+}
+
+.clear-button {
+    right: 5px;
+}
+
+.search-button {
+    left: 5px;
+}
+
+.gallery {
+    padding: 0 15px 20px;
+    min-height: 57vh;
+}
+
+.gallery__images {
+    columns: 4;
+    gap: 12px;
+}
+
+.image-card {
+    display: flex;
+    position: relative;
+    list-style: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.gallery__images img {
+    width: 100%;
+}
+
+.image-details {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    padding: 0 7px 7px;
+    display: flex;
+    justify-content: space-between;
+    transition: bottom 0.5s ease;
+}
+
+.image-card:hover .image-details {
+    bottom: 0;
+}
+
+.image-author {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    gap: 7px;
+    pointer-events: none;
+}
+
+.name {
+    font-size: small;
+    font-weight: 500;
+}
+
+.download-button {
+    color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.download-button:hover {
+    transform: scale(1.1);
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #5b4c4d;
+    padding-bottom: 7px;
+}
+
+.github-icon {
+    width: 30px;
+}
+
+.school-icon {
+    width: 25px;
+}
