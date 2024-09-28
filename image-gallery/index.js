@@ -175,3 +175,82 @@ window.addEventListener("scroll", async () => {
     isFetching = false;
   }
 });
+
+//!FAVORITES
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+function toggleFavorite(image) {
+  const imageId = image.id;
+  const imageIndex = favorites.findIndex((fav) => fav.id === imageId);
+
+  if (imageIndex > -1) {
+    favorites.splice(imageIndex, 1);
+  } else {
+    favorites.push(image);
+  }
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  updateFavoritesDisplay();
+  updateGallery();
+}
+
+function isFavorite(imageId) {
+  return favorites.some((fav) => fav.id === imageId);
+}
+
+function updateGallery() {
+  const images = gallery.querySelectorAll(".image-card");
+
+  images.forEach((imageCard) => {
+    const imageId = imageCard.dataset.imageId;
+    const favoriteButton = imageCard.querySelector(".button-favorite");
+    const icon = favoriteButton.querySelector(".favorite-icon");
+
+    favoriteButton.classList.toggle("favorite", isFavorite(imageId));
+    icon.textContent = isFavorite(imageId) ? "favorite" : "favorite_border";
+  });
+}
+
+function updateFavoritesDisplay() {
+  const favoritesList = document.querySelector(".favorites__list");
+  const toggleButton = document.querySelector(".favorites__toggle-button");
+  favoritesList.innerHTML = "";
+  if (favorites.length === 0) {
+    toggleButton.style.opacity = "0.3";
+    toggleButton.classList.add("no-scale");
+    return;
+  } else {
+    toggleButton.style.opacity = "0.7";
+    toggleButton.classList.remove("no-scale");
+  }
+
+  favorites.forEach((image) => {
+    const favoriteItem = document.createElement("li");
+    favoriteItem.classList.add("image-card", "favorite-image-card");
+    favoriteItem.dataset.imageId = image.id;
+    favoriteItem.innerHTML = `
+            <img class="favorite-image" src="${image.urls.small}" alt="${image.alt_description}">
+            <a href="${image.links.download}" target="_blank" class="download-button">
+                <i class="download-icon material-icons">download</i>
+            </a>
+            <button class="button-favorite favorite">
+                <i class="favorite-icon material-icons">favorite</i>
+            </button>
+        `;
+
+    const favoriteButton = favoriteItem.querySelector(".button-favorite");
+    favoriteButton.addEventListener("click", () => toggleFavorite(image));
+
+    favoritesList.appendChild(favoriteItem);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateFavoritesDisplay();
+});
+
+const toggleButton = document.querySelector(".favorites__toggle-button");
+const favoritesContainer = document.querySelector(".favorites__container");
+
+toggleButton.addEventListener("click", () => {
+  favoritesContainer.classList.toggle("open");
+});
