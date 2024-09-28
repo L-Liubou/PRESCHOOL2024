@@ -162,3 +162,16 @@ async function searchImages() {
     await fetchRandomImages();
   }
 }
+
+window.addEventListener("scroll", async () => {
+  if (
+    !isFetching &&
+    window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 &&
+    totalImagesLoaded < maxImages
+  ) {
+    isFetching = true;
+    page++;
+    await fetchImages(query, page);
+    isFetching = false;
+  }
+});
