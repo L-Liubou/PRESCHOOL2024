@@ -1,5 +1,6 @@
-const apiKey = "yuS-48LpUvnHuIDarBer_vakDeH4pU6t_BcrDXgEkaE";
+//const apiKey = "yuS-48LpUvnHuIDarBer_vakDeH4pU6t_BcrDXgEkaE";
 //const apiKey = "w4Fh_zUBh-TwyEipLaFx2FFH_SXoT3Yc3F1ftgVIP3w";
+const apiKey = 'qizPVDkPGkFUXDVnAAIL8lU4PIg9sj2LefXpbTfLmuM';
 
 const gallery = document.querySelector(".gallery__images");
 const searchInput = document.querySelector(".search-input");
@@ -49,7 +50,7 @@ async function fetchImages(query = "", page = 1) {
   try {
     isFetching = true;
     const response = await fetch(
-      `https://api.unsplash.com/search/photos?query=${query}&page=${page}&per_page=40&client_id=${apiKey}`,
+      `https://api.unsplash.com/search/photos?query=${query}&page=${page}&per_page=40&client_id=${apiKey}`
     );
 
     if (response.ok) {
@@ -59,18 +60,18 @@ async function fetchImages(query = "", page = 1) {
         displayMessage("No results found. Please try a different search term.");
         gallery.innerHTML = "";
       } else {
-        displayImages(data);
+        displayImages(data.results); 
         displayMessage(`<p class="query-message">${query}</p>`);
       }
     } else {
       displayMessage(
-        "An error occurred while fetching images. Please try again.",
+        "An error occurred while fetching images. Please try again."
       );
     }
   } catch (error) {
     console.error("Error fetching search results:", error);
     displayMessage(
-      "An error occurred while fetching images. Please try again.",
+      "An error occurred while fetching images. Please try again."
     );
   } finally {
     isFetching = false;
@@ -132,9 +133,9 @@ clearButton.addEventListener("click", async () => {
   searchInput.focus();
   query = "";
   totalImagesLoaded = 0;
-  clearMessages();
-  gallery.innerHTML = "";
-  await fetchRandomImages();
+  // clearMessages();
+  // gallery.innerHTML = "";
+  // await fetchRandomImages();
 });
 
 searchButton.addEventListener("click", async () => {
