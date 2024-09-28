@@ -112,6 +112,7 @@ button,
     font-weight: 700;
     color: #5b4c4d;
     text-align: center;
+    pointer-events: none;
 }
 
 .query-message {
@@ -193,7 +194,7 @@ button,
 .download-button {
     color: #ffffff7a;
     transition: color 0.3s ease;
-    border: 1px solid #ffffff;
+    border: 1.5px solid #ffffff;
     border-radius: 5px;
 }
 
@@ -270,6 +271,12 @@ button,
     left: 5px;
     color:#ffffff;
     border: none;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.favorite-image-card a:hover {
+    opacity: 1;
 }
 
 .favorite-image-card button {
