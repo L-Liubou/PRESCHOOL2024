@@ -1,6 +1,6 @@
 //const apiKey = "yuS-48LpUvnHuIDarBer_vakDeH4pU6t_BcrDXgEkaE";
-//const apiKey = "w4Fh_zUBh-TwyEipLaFx2FFH_SXoT3Yc3F1ftgVIP3w";
-const apiKey = 'qizPVDkPGkFUXDVnAAIL8lU4PIg9sj2LefXpbTfLmuM';
+const apiKey = "w4Fh_zUBh-TwyEipLaFx2FFH_SXoT3Yc3F1ftgVIP3w";
+//const apiKey = 'qizPVDkPGkFUXDVnAAIL8lU4PIg9sj2LefXpbTfLmuM';
 
 const gallery = document.querySelector(".gallery__images");
 const searchInput = document.querySelector(".search-input");
@@ -98,8 +98,8 @@ function displayImages(images) {
                     <i class="image-icon material-icons">account_circle</i>
                     <span class="name">${image.user.name}</span>
                 </div>
-                <a href="${image.links.download}" target="_blank" class="download-button">
-                    <i class="download-icon material-icons">download</i>
+                <a href="${image.links.download}" target="_blank" class="open_in_new-button">
+                    <i class="open_in_new-icon material-icons">open_in_new</i>
                 </a>
             </div>
             <button class="button-favorite ${isFavorite(image.id) ? "favorite" : ""}">
@@ -168,7 +168,7 @@ window.addEventListener("scroll", async () => {
   if (
     !isFetching &&
     window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 &&
-    totalImagesLoaded < maxImages
+    totalImagesLoaded < maxImages && query
   ) {
     isFetching = true;
     page++;
@@ -230,8 +230,8 @@ function updateFavoritesDisplay() {
     favoriteItem.dataset.imageId = image.id;
     favoriteItem.innerHTML = `
             <img class="favorite-image" src="${image.urls.small}" alt="${image.alt_description}">
-            <a href="${image.links.download}" target="_blank" class="download-button">
-                <i class="download-icon material-icons">download</i>
+            <a href="${image.links.download}" target="_blank" class="open_in_new-button">
+                <i class="open_in_new-icon material-icons">open_in_new</i>
             </a>
             <button class="button-favorite favorite">
                 <i class="favorite-icon material-icons">favorite</i>
