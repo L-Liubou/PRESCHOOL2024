@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" href="svg/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="header">
+    <nav class="header__nav">
+        <img src="svg/logo.svg" class="header__icon" alt="">
+        <h1 class="header__title">Catch the Moment</h1>
+        <h5 class="header__subtitle">Find Beautiful Images in One Click</h5>
+        <div class="header__search-box">
+            <button class="search-button">
+                <i class="search-icon material-icons">search</i>
+            </button>
+            <input type="text" autocomplete="off" name="search" class="search-input"
+                   placeholder="Enter Your Search Query">
+            <button class="clear-button">
+                <i class="clear-icon material-icons">close</i>
+            </button>
+        </div>
+    </nav>
+</header>
+<div class="app">
+    <div class="message-container"></div>
+    <section class="favorites">
+        <button class="favorites__toggle-button">
+            <img src="svg/favourite-folder.svg" alt="folder">
+        </button>
+        <div class="favorites__container">
+            <ul class="favorites__list"></ul>
+        </div>
+    </section>
+</div>
+<section class="gallery">
+    <ul class="gallery__images"></ul>
+</section>
+<footer class="footer">
+    <a href="https://github.com/L-Liubou" target="_blank">
+        <img src="svg/github.svg" alt="GitHub icon" class="github-icon">
+    </a>
+    <span>2024</span>
+    <a href="https://rs.school/courses/javascript-preschool-ru" target="_blank">
+        <img src="svg/rss-logo.svg" alt="RSS logo" class="school-icon">
+    </a>
+</footer>
+<script src="index.js"></script>
+</body>
+</html>
