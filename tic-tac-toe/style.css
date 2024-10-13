@@ -141,7 +141,8 @@ body {
     align-items: baseline;
 }
 
-.back-button {
+.back-button,
+.return-button {
     cursor: pointer;
     border: none;
     background: inherit;
@@ -149,11 +150,13 @@ body {
     margin-right: 7px;
 }
 
-.back-button i {
+.back-button i,
+.return-button i {
     font-weight: 900;
 }
 
-.back-button:hover {
+.back-button:hover,
+.return-button:hover {
     transform: scale(1.2);
 }
 
@@ -237,4 +240,145 @@ option {
     font-size: larger;
     transition: all 0.3s ease;
     font-weight: 600;
+}
+
+.game-area {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.game-area__header {
+    display: flex;
+    width: 100%;
+}
+
+.turn-display {
+    font-size: xx-large;
+    pointer-events: none;
+    margin-left: 70px
+}
+
+.game-board {
+    width: 402px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.box {
+    height: 130px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 14px 4px #00000024;
+    cursor: pointer;
+    background-image:none;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: box-shadow 0.3s ease;
+}
+
+.box:hover {
+    box-shadow: inset 0 2px 12px 5px #00000038;
+}
+
+.box img {
+    width: 85px;
+}
+
+.winning-cell {
+    animation: highlightWinningCells 1s ease-in-out 3;
+}
+
+@keyframes highlightWinningCells {
+    0% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: rgba(255, 121, 3, 0.25);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.draw-field {
+    animation: highlightDrawField 1s ease-in-out 3;
+}
+
+@keyframes highlightDrawField {
+    0% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: #bdbdbd;
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.score-table-container {
+    max-height: 183px;
+    /* overflow-y: auto;   */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.score-table {
+    width: 100%;
+    min-width: 400px;
+    border-collapse: collapse;
+
+}
+
+.score-table th {
+    background-color: #b2afaf;
+    color: rgb(0, 0, 0);
+    padding: 8px;
+    text-align: start;
+    pointer-events: none;
+}
+
+.score-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.score-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.score-table tbody tr:hover {
+    background-color: #e1e1e1;
+}
+
+.score-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.score-table-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.score-table-container::-webkit-scrollbar {
+    width: 3px;
+}
+
+.score-table-container::-webkit-scrollbar-thumb {
+    background-color: #ff7600;
+    border-radius: 10px;
 }
