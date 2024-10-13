@@ -148,6 +148,76 @@ function handleBoxClick(index) {
 }
 
 
+//!LEVEL
+function computerMove() {
+    if (difficultyLevel === 'easy') {
+        makeRandomMove();
+    } else if (difficultyLevel === 'medium') {
+        if (!blockPlayer()) {
+            makeRandomMove();
+        }
+    } else if (difficultyLevel === 'hard') {
+        if (!makeWinningMove()) {
+            if (!blockPlayer()) {
+                makeRandomMove();
+            }
+        }
+    }
+
+    if (checkWinner()) {
+        const winningCombination = findWinningCombination();
+        highlightWinningCombination(winningCombination);
+        showResultModal('Computer wins', 'lose');
+    } else if (!gameBoard.includes('')) {
+        showResultModal("It's a draw", 'draw');
+    } else {
+        currentPlayer = 'X';
+        turnDisplay.textContent = "It's YOUR move";
+    }
+}
+
+function makeRandomMove() {
+    let validMove = false;
+    while (!validMove) {
+        const randomIndex = Math.floor(Math.random() * 9);
+        if (gameBoard[randomIndex] === '') {
+            gameBoard[randomIndex] = 'O';
+            setBoxImage(randomIndex, 'O');
+            validMove = true; 
+        }
+    }
+}
+
+function blockPlayer() {
+    for (let i = 0; i < 9; i++) {
+        if (gameBoard[i] === '') {
+            gameBoard[i] = 'X';  
+            if (checkWinner()) {
+                gameBoard[i] = 'O';  
+                setBoxImage(i, 'O');
+                return true;  
+            }
+            gameBoard[i] = '';  
+        }
+    }
+    return false;  
+}
+
+function makeWinningMove() {
+    for (let i = 0; i < 9; i++) {
+        if (gameBoard[i] === '') {
+            gameBoard[i] = 'O'; 
+            if (checkWinner()) {
+                setBoxImage(i, 'O');
+                return true; 
+            }
+            gameBoard[i] = '';  
+        }
+    }
+    return false; 
+}
+
+
 
 
 
