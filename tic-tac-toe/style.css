@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Fredericka the Great", serif;
+}
+
+html {
+    min-width: 410px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('oro_footer_helloween.png') no-repeat bottom fixed;
+    background-size: 100%;
+    position: relative;
+
+}
+
+.welcome-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 7px;
+    background-color:#ff7600;
+    border-radius: 8px;
+    padding: 25px 0 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+    width: 50%;
+    max-width: 500px;
+    min-width: 400px;
+}
+
+.welcome-modal__title {
+    pointer-events: none;
+    font-size: xx-large;
+    position: relative;
+}
+
+.welcome-modal__title .highlight {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.tt {
+    position: absolute;
+    top: 88px;
+    right: -23px;
+    transform: rotateZ(9deg);
+    color: #0000008a;
+}
+
+.player-choice__title {
+    font-size: xx-large;
+    pointer-events: none;
+    padding: 5px 0 15px;
+}
+
+.player-choice__icon {
+    width: 85px;
+}
+
+.player-choice__icon.o-icon {
+    width: 87px;
+}
+
+.player-choice__options {
+    display: flex;
+    gap: 50px;
+    padding: 10px 0;
+}
+
+.player-choice__input {
+    cursor: pointer;
+    accent-color: #000000;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.player-choice__input:hover {
+    transform: scale(1.1);
+}
+
+.choice__option {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 15px;
+}
+
+.continue-button {
+    font-size: xx-large;
+    padding: 2px 13px;
+    background-color:inherit;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #00000082;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.continue-button:hover {
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(2px);
+}
