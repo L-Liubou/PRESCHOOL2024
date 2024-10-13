@@ -11,7 +11,7 @@ const returnButton = document.querySelector('.return-button');
 const errorMessage = document.querySelector('.error-message');
 const turnDisplay = document.querySelector('.turn-display');
 const difficultySelect = document.querySelector('.difficulty-select');
-
+const boxes = document.querySelectorAll('.box');
 
 let gameBoard = ['', '', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
@@ -20,6 +20,7 @@ let gameActive = true;
 let userCharacter;
 let difficultyLevel;
 let gameStartTime;
+let aiCharacter = 'svg/knife.svg';
 
 
 function showElement(element) {
@@ -104,6 +105,48 @@ restartButton.addEventListener('click', () => {
         showElement(gameArea);
     }, 300);
 });
+
+function setBoxImage(index, player) {
+    boxes[index].innerHTML = `<img src="${player === 'X' ? userCharacter : aiCharacter}" alt="${player}">`;
+}
+
+boxes.forEach((box, index) => {
+    box.addEventListener('click', () => handleBoxClick(index));
+});
+
+function handleBoxClick(index) {
+
+    if (gameBoard[index] !== '' || !gameActive || currentPlayer === 'O' && !isUserX) {
+        return;
+    }
+    gameBoard[index] = currentPlayer;
+    setBoxImage(index, currentPlayer);
+
+    if (checkWinner()) {
+        const winningCondition = winningConditions.find(condition => {
+            const [a, b, c] = condition;
+            return gameBoard[a] === currentPlayer && gameBoard[b] === currentPlayer && gameBoard[c] === currentPlayer;
+        });
+
+        highlightWinningCombination(winningCondition);
+        setTimeout(() => showResultModal('You WIN!', 'win'), 1000);
+        return;
+    }
+
+    if (!gameBoard.includes('')) {
+        highlightDraw();
+        setTimeout(() => showResultModal("It's draw", 'draw'), 1000);
+        return;
+    }
+
+    currentPlayer = 'O';
+    turnDisplay.textContent = "Computer's move";
+
+    setTimeout(() => {
+        computerMove();
+    }, 600);
+}
+
 
 
 
