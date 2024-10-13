@@ -1,14 +1,125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+    <div class="welcome-modal">
+        <h1 class="welcome-modal__title">Welcome to<br><span class="highlight">HALLOWEEN</span><span class="tt">tic-tac-toe!</span></h1>
+        <form class="player-choice">
+            <h2 class="player-choice__title">Pick your side</h2>
+            <div class="player-choice__options">
+                <label class="choice__option">
+                    <input type="radio" name="player" value="X" class="player-choice__input" checked>
+                    <img src="svg/cross.svg" alt="X" class="player-choice__icon">   
+                </label>
+                <label class="choice__option">
+                    <input type="radio" name="player" value="O" class="player-choice__input">
+                    <img src="svg/letter-o.svg" alt="O" class="player-choice__icon o-icon">    
+                </label>
+            </div>
+        </form>
+        <button type="button" class="continue-button">CONTINUE</button>  
+    </div>
+    <div class="character-selection">
+        <div class="character-selection__header">
+            <button class="return-button">
+                <i class="material-icons">keyboard_backspace</i>
+            </button>
+            <h2 class="character-selection__title">Select your character to start the game</h2>
+        </div>
+        <div class="character-selection__buttons">
+            <button class="character-btn" data-character="dracula">
+                <img src="svg/dracula.svg" alt="">
+            </button>
+            <button class="character-btn" data-character="zombie">
+                <img src="svg/zombie.svg" alt="">
+            </button>
+            <button class="character-btn" data-character="frankenstein">
+                <img src="svg/frankenstein.svg" alt="">
+            </button>
+            <button class="character-btn" data-character="black-cat">
+                <img src="svg/black-cat.svg" alt="">
+            </button>
+            <button class="character-btn" data-character="avatar">
+                <img src="svg/avatar.svg" alt="">
+            </button>
+            <button class="character-btn" data-character="voodoo-doll">
+                <img src="svg/voodoo-doll.svg" alt="">
+            </button>
+            <button class="character-btn" data-character="clown">
+                <img src="svg/clown.svg" alt="">
+            </button>
+            <button class="character-btn" data-character="scream">
+                <img src="svg/scream.svg" alt="">
+            </button>
+        </div>
+        <select class="difficulty-select">
+            <option value="easy">EASY</option>
+            <option value="medium">MEDIUM</option>
+            <option value="hard">HARD</option>
+        </select>
+        <span class="error-message"></span>
+        <button type="button" class="start-button">START GAME</button>  
+    </div>
+    <div class="game-area">
+        <div class="game-area__header">
+            <button class="back-button">
+                <i class="material-icons">keyboard_backspace</i>
+            </button>
+            <h2 class="turn-display"></h2>
+        </div>
+        <div class="game-board">
+            <div class="box" id="box-1"></div>
+            <div class="box" id="box-2"></div>
+            <div class="box" id="box-3"></div>
+            <div class="box" id="box-4"></div>
+            <div class="box" id="box-5"></div>
+            <div class="box" id="box-6"></div>
+            <div class="box" id="box-7"></div>
+            <div class="box" id="box-8"></div>
+            <div class="box" id="box-9"></div>
+        </div>
+        <div class="score-table-container">
+            <table class="score-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Winner</th>
+                        <th>Difficulty</th>
+                        <th>Moves</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="result-modal">
+        <img src="" alt="" class="result-modal__image">
+        <h3 class="result-modal__text">You won this game!</h3>
+        <button class="restart-btn">Restart Game</button>
+    </div>
+    <footer>
+        <a href="https://github.com/L-Liubou" target="_blank">
+            <img src="svg/github.svg" class="github-icon" alt="" >
+        </a>
+        <span>2024</span>
+        <a href="https://rs.school/courses/javascript-preschool-ru" target="_blank">
+            <img src="svg/rss-logo.svg" class="school-icon" alt="">
+         </a>
+    </footer>
 <script src="index.js"></script>
 </body>
 </html>
+
+
+
+
+
