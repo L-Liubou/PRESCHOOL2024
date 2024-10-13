@@ -382,3 +382,84 @@ option {
     background-color: #ff7600;
     border-radius: 10px;
 }
+
+.modal-overlay-active {
+    pointer-events: none;
+}
+
+.result-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    display: flex;
+    width: 50%;
+    min-width: 400px;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 40px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    background-color: #292828fc;
+    color: #ffffff;
+    pointer-events: auto;
+}
+
+.result-modal__image {
+    width: 180px;
+}
+
+.result-modal__image.animated {
+    animation: jumpShake 3s forwards;
+}
+
+@keyframes jumpShake {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(-3deg);
+    }
+    50% {
+        transform: translateY(0) rotate(3deg);
+    }
+    75% {
+        transform: translateY(-5px) rotate(-1deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+
+.result-modal__title {
+    pointer-events: none;
+    font-size: xxx-large;
+}
+
+.result-modal__text {
+    font-size: xx-large;
+    pointer-events: none;
+    padding: 10px;
+}
+
+.restart-btn {
+    /*padding: 4px;*/
+    font-size: x-large;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    color:#ffffff;
+    background-color: inherit;
+    border-radius: 5px;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+    border: 2px solid #ff7600;
+    color: #ff7600;
+    transform: scale(1.05);
+}
