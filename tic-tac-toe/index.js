@@ -12,6 +12,7 @@ const errorMessage = document.querySelector('.error-message');
 const turnDisplay = document.querySelector('.turn-display');
 const difficultySelect = document.querySelector('.difficulty-select');
 const boxes = document.querySelectorAll('.box');
+const resultText = document.querySelector('.result-modal__text');
 
 let gameBoard = ['', '', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
@@ -280,9 +281,76 @@ function resetGame() {
     document.body.classList.remove('modal-overlay-active');
 }
 
+//!RESULTS
+function showResultModal(message, resultType) {
+    const resultImage = document.querySelector('.result-modal__image');
+    resultImage.classList.remove('animated');
 
+    let winner;
+    if (resultType === 'win') {
+        resultImage.src = 'svg/pumpkin-smile.svg';
+        winner = 'Player';
+    } else if (resultType === 'lose') {
+        resultImage.src = 'svg/pumpkin-cry.svg';
+        winner = 'Computer';
+    } else if (resultType === 'draw') {
+        resultImage.src = 'svg/pumpkin-surprised.svg';
+        winner = 'Draw';
+    }
 
+    resultText.textContent = message;
+    showElement(resultModal);
+    document.body.classList.add('modal-overlay-active');
 
+    setTimeout(() => {
+        resultImage.classList.add('animated');
+    }, 10);
 
+    const moves = gameBoard.filter(box => box !== '').length;
+    saveGameResult(winner, moves);
+}
 
+let gameHistory = JSON.parse(localStorage.getItem('gameHistory')) || [];
 
+function updateScoreTable() {
+    const scoreTableBody = document.querySelector('.score-table tbody');
+    scoreTableBody.innerHTML = '';
+
+    const recentGames = gameHistory.slice(-10).reverse();
+
+    recentGames.forEach((game, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${game.winner}</td>
+            <td>${game.difficulty}</td> 
+            <td>${game.moves}</td>
+            <td>${game.duration}</td> 
+        `;
+        scoreTableBody.appendChild(row);
+    });
+}
+
+function saveGameResult(winner, moves) {
+    const currentTime = Date.now();
+    const gameDuration = Math.floor((currentTime - gameStartTime) / 1000);
+    const formattedTime = `${Math.floor(gameDuration / 60)}:${('0' + (gameDuration % 60)).slice(-2)}`;
+
+    const gameResult = {
+        winner: winner,
+        difficulty: difficultyLevel,
+        moves: moves,
+        duration: formattedTime,
+    };
+
+    gameHistory.push(gameResult);
+    if (gameHistory.length > 10) {
+        gameHistory.shift();
+    }
+
+    localStorage.setItem('gameHistory', JSON.stringify(gameHistory));
+    updateScoreTable();
+}
+
+showWelcomeModal();
+updateScoreTable();
