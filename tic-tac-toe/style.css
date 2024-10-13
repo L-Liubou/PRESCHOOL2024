@@ -463,3 +463,47 @@ option {
     color: #ff7600;
     transform: scale(1.05);
 }
+
+/* footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    color: #ffffff;
+} */
+
+footer {
+    position: fixed;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+footer span {
+    pointer-events: none;
+}
+
+footer img {
+    transition: transform 0.3s ease;
+}
+
+footer img:hover {
+    transform: scale(1.1);
+}
+
+.school-icon {
+    width: 25px;
+}
+
+.github-icon {
+    width: 22px;
+}
+
