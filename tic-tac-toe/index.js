@@ -261,6 +261,25 @@ function highlightDraw() {
     });
 }
 
+//!RESTART
+function resetGame() {
+    gameBoard = ['', '', '', '', '', '', '', '', ''];
+    boxes.forEach(box => {
+        box.innerHTML = '';
+        box.classList.remove('winning-cell');
+        box.classList.remove('draw-field');
+    });
+    gameActive = true;
+    currentPlayer = isUserX ? 'X' : 'O';
+    turnDisplay.textContent = isUserX ? "It's YOUR move" : "Computer move";
+
+    if (!isUserX) {
+        setTimeout(() => computerMove(), 600);
+    }
+    resultModal.classList.add('hidden');
+    document.body.classList.remove('modal-overlay-active');
+}
+
 
 
 
