@@ -181,7 +181,7 @@ function computerMove() {
     showResultModal("It's a draw", "draw");
   } else {
     currentPlayer = "X";
-    turnDisplay.textContent = "It's YOUR move";
+    turnDisplay.textContent = "It's your move";
   }
 }
 
@@ -288,7 +288,7 @@ function resetGame() {
   });
   gameActive = true;
   currentPlayer = isUserX ? "X" : "O";
-  turnDisplay.textContent = isUserX ? "It's YOUR move" : "Computer move";
+  turnDisplay.textContent = isUserX ? "It's your move" : "Computer's move";
 
   if (!isUserX) {
     setTimeout(() => computerMove(), 600);
