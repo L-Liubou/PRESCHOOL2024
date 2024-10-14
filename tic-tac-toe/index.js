@@ -14,6 +14,23 @@ const difficultySelect = document.querySelector(".difficulty-select");
 const boxes = document.querySelectorAll(".box");
 const resultText = document.querySelector(".result-modal__text");
 
+const moveSound = new Audio("audio/click.mp3");
+const winSound = new Audio("audio/violin-win.mp3");
+const loseSound = new Audio("audio/violin-lose.mp3");
+const drawSound = new Audio("audio/woo.mp3");
+const volumeButton = document.querySelector(".volume-button");
+let isMuted = false;
+
+volumeButton.addEventListener("click", () => {
+  isMuted = !isMuted;
+
+  if (isMuted) {
+    volumeButton.innerHTML = '<i class="material-icons">volume_off</i>';
+  } else {
+    volumeButton.innerHTML = '<i class="material-icons">volume_up</i>';
+  }
+});
+
 let gameBoard = ["", "", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let isUserX;
@@ -111,6 +128,11 @@ restartButton.addEventListener("click", () => {
 function setBoxImage(index, player) {
   boxes[index].innerHTML =
     `<img src="${player === "X" ? userCharacter : aiCharacter}" alt="${player}">`;
+
+  if (!isMuted) {
+    moveSound.currentTime = 0;
+    moveSound.play();
+  }
 }
 
 boxes.forEach((box, index) => {
@@ -306,12 +328,15 @@ function showResultModal(message, resultType) {
   if (resultType === "win") {
     resultImage.src = "svg/pumpkin-smile.svg";
     winner = "Player";
+    if (!isMuted) winSound.play();
   } else if (resultType === "lose") {
     resultImage.src = "svg/pumpkin-cry.svg";
     winner = "Computer";
+    if (!isMuted) loseSound.play();
   } else if (resultType === "draw") {
     resultImage.src = "svg/pumpkin-surprised.svg";
     winner = "Draw";
+    if (!isMuted) drawSound.play();
   }
 
   resultText.textContent = message;
