@@ -39,6 +39,7 @@ let userCharacter;
 let difficultyLevel;
 let gameStartTime;
 let aiCharacter = "svg/knife.svg";
+let isComputerTurn = false;
 
 function showElement(element) {
   element.classList.remove("hidden");
@@ -143,6 +144,7 @@ function handleBoxClick(index) {
   if (
     gameBoard[index] !== "" ||
     !gameActive ||
+    isComputerTurn ||
     (currentPlayer === "O" && !isUserX)
   ) {
     return;
@@ -173,7 +175,7 @@ function handleBoxClick(index) {
 
   currentPlayer = "O";
   turnDisplay.textContent = "Computer's move";
-
+  isComputerTurn = true;
   setTimeout(() => {
     computerMove();
   }, 600);
@@ -204,6 +206,7 @@ function computerMove() {
   } else {
     currentPlayer = "X";
     turnDisplay.textContent = "It's your move";
+    isComputerTurn = false;
   }
 }
 
@@ -311,7 +314,7 @@ function resetGame() {
   gameActive = true;
   currentPlayer = isUserX ? "X" : "O";
   turnDisplay.textContent = isUserX ? "It's your move" : "Computer's move";
-
+  isComputerTurn = !isUserX;
   if (!isUserX) {
     setTimeout(() => computerMove(), 600);
   }
