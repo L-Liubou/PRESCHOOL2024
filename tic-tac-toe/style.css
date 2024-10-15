@@ -14,7 +14,8 @@ body {
     align-items: center;
     min-height: 100vh;
     /* min-width: 420px; */
-    background: url('oro_footer_helloween.png') no-repeat bottom fixed;
+    background: url('oro_footer_helloween.png') no-repeat fixed;
+    background-position: center bottom 29px; 
     background-size: contain;
     position: relative;
     color: black;
@@ -117,7 +118,7 @@ body {
 
 .character-selection {
     position: absolute;
-    top: 50%;
+    top: 49%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -125,9 +126,8 @@ body {
     flex-direction: column;
     text-align: center;
     transition: all 0.5s ease;
-    width: 78%;
+    width: 82%;
     max-width: 525px;
-    margin: 10px 0;
 }
 
 .character-selection__top {
@@ -147,7 +147,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-.back-button i,
 .return-button i {
     font-weight: 900;
     font-size: 30px;
@@ -213,9 +212,9 @@ body {
     font-weight: 600;
     color: #000000;
     appearance: none;
-    background: url('svg/arrow-icon.svg') no-repeat right center;
+    background: url('svg/arrow-icon.svg') no-repeat bottom center;
     background-size: 20px;
-    padding-right: 23px;
+    padding-bottom: 15px;
 }
 
 option {
@@ -229,7 +228,7 @@ option {
 }
 
 .start-button {
-    margin-top: 10px;
+    margin-top: 5px;
     background: inherit;
     border: 2px solid #00000082;
     border-radius: 7px;
@@ -244,14 +243,13 @@ option {
 
 .game-area {
     position: absolute;
-    top: 50%;
+    top: 47%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: all 0.3s ease;
-    margin: 10px 0;
 }
 
 .game-area__top {
@@ -265,7 +263,7 @@ option {
 .turn-display {
     font-size: xx-large;
     pointer-events: none;
-    height: 65px;
+    height: 55px;
 }
 
 .volume-button {
@@ -275,9 +273,14 @@ option {
     transition: transform 0.3s ease;
 }
 
-.volume-button i {
+.volume-button i,
+.back-button i {
     color: #000000;
     font-size: 26px;
+}
+
+.back-button i {
+    font-weight: 900;
 }
 
 .volume-button:hover {
@@ -490,7 +493,7 @@ option {
 footer {
     position: fixed;
     bottom: 0;
-    margin: 5px 0;
+    padding: 5px 0;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -498,7 +501,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #000000;
 }
 
 footer span {
@@ -514,10 +517,10 @@ footer img:hover {
 }
 
 .school-icon {
-    width: 25px;
+    width: 30px;
 }
 
 .github-icon {
-    width: 22px;
+    width: 21px;
 }
 
